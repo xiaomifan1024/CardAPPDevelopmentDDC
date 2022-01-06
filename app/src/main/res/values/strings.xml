@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CardApp</string>
+    <string name="title_home">ホーム</string>
+    <string name="title_history">履歴</string>
+    <string name="title_pay">支払い</string>
+    <string name="title_notifications">お知らせ</string>
+    <string name="title_setting">設定</string>
+</resources>

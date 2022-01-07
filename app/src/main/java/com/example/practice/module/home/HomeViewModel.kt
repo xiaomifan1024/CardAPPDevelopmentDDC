@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice.bean.HomeInfoBean
 import com.example.practice.network.NetworkApi
-import com.example.practice.network.base.WeatherGson
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {

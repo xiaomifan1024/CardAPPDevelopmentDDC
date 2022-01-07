@@ -32,6 +32,9 @@ class HomeFragment :  BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inf
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        homeViewModel.homeInfoLiveData.observe(viewLifecycleOwner, Observer {
+            textView.text = it.getOrNull()?.title
+        })
     }
 
 }

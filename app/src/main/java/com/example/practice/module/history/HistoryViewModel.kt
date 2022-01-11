@@ -6,10 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice.bean.HistoryBean
-import com.example.practice.bean.HomeInfoBean
-import com.example.practice.module.home.HomeViewModel
-import com.example.practice.network.NetworkApi
-import com.example.practice.network.ReadJsonFile
+import com.example.practice.json.ReadJsonFile
 import kotlinx.coroutines.launch
 
 class HistoryViewModel : ViewModel() {

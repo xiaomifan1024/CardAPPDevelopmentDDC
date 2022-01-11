@@ -1,8 +1,7 @@
-package com.example.practice.network
+package com.example.practice.json
 
 import android.content.Context
 import android.util.Log
-import com.example.practice.bean.HistoryBean
 import com.example.practice.network.base.BaseNetworkApi
 import com.google.gson.Gson
 import java.io.ByteArrayOutputStream

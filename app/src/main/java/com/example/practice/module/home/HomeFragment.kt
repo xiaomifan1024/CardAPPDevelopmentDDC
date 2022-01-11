@@ -24,7 +24,7 @@ class HomeFragment :  BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inf
     private fun initData() {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
-        homeViewModel.requestHomeInfo()
+//        homeViewModel.requestHomeInfo()
     }
 
     private fun initView() {

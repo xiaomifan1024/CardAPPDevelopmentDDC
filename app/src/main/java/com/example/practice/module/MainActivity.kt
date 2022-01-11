@@ -33,7 +33,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 R.id.navigation_settings
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.labelVisibilityMode= BottomNavigationView.LABEL_VISIBILITY_LABELED
         navView.setupWithNavController(navController)
     }

@@ -15,10 +15,10 @@ class HomeViewModel : ViewModel() {
     }
     val text: LiveData<String> = _text
 
-    fun requestHomeInfo() {
-        viewModelScope.launch {
-            val result = NetworkApi.requestHomeInfo()
-            homeInfoLiveData.value = result
-        }
-    }
+//    fun requestHomeInfo() {
+//        viewModelScope.launch {
+//            val result = NetworkApi.requestHomeInfo()
+//            homeInfoLiveData.value = result
+//        }
+//    }
 }

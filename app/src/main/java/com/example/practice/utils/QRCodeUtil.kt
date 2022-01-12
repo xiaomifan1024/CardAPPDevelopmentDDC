@@ -3,6 +3,7 @@ package com.example.practice.utils
 import android.graphics.Canvas
 
 import android.graphics.Bitmap
+import android.graphics.Color
 
 import java.io.FileOutputStream
 
@@ -19,9 +20,6 @@ import com.google.zxing.EncodeHintType
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
 
 import java.util.HashMap
-
-
-
 
 class QRCodeUtil {
     fun createQRImage(
@@ -57,9 +55,9 @@ class QRCodeUtil {
             for (y in 0 until heightPix) {
                 for (x in 0 until widthPix) {
                     if (bitMatrix!![x, y]) {
-                        pixels[y * widthPix + x] = -0x1000000
+                        pixels[y * widthPix + x] = Color.BLACK
                     } else {
-                        pixels[y * widthPix + x] = -0x1
+                        pixels[y * widthPix + x] = Color.WHITE
                     }
                 }
             }

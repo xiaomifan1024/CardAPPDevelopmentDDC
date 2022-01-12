@@ -11,6 +11,7 @@ import com.example.practice.R
 import com.example.practice.base.BaseFragment
 import com.example.practice.bean.Data
 import com.example.practice.databinding.FragmentHistoryBinding
+import com.example.practice.network.NetworkApi
 
 class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBinding::inflate) {
 
@@ -31,9 +32,6 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
     private fun initView() {
 
         val historyListView: RecyclerView = viewBinding.listView
-//        historyViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
         historyViewModel.historyListLiveData.observe(viewLifecycleOwner, Observer {
             var init: (View, Data) -> Unit = {v:View,d:Data ->
                 var addressView = v.findViewById<TextView>(R.id.address)

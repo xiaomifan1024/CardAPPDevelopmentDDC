@@ -9,8 +9,6 @@ class CommonRequestInterceptor : Interceptor {
         val request = chain.request()
         val builder = request.newBuilder()
         // 請求へーだー
-//        builder.addHeader("brand", Build.BRAND)
-//        builder.addHeader("model", Build.MODEL)
         builder.addHeader("x-api-key", "x-api-key")
 
         return chain.proceed(builder.build())

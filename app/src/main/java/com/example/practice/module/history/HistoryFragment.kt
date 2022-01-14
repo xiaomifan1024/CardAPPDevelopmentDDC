@@ -41,10 +41,18 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
                 dateview.setText(d.date)
                 priceView.setText(d.price)
             }
+                //get from networkapi
             var adapter = it.getOrNull()?.let { it1 ->
                 HistoryListViewAdapter(R.layout.history_list_item,
                     it1.dataList,init)
             }
+                //get from json file
+//           var adapter = it.let { it1 ->
+//               it1.data?.let { it2 ->
+//                   HistoryListViewAdapter(R.layout.history_list_item,
+//                      it2.dataList,init)
+//               }
+//            }
             historyListView.layoutManager= LinearLayoutManager(getActivity())
             historyListView.adapter=adapter
 

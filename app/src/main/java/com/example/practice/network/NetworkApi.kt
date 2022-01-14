@@ -18,11 +18,11 @@ import java.io.InputStream
 
 /**
  * ネットワーク請求実施
- * サーバーのURL：http://localhost:8080/
+ * サーバーのURL：https://fxvnv345tf.execute-api.ap-northeast-1.amazonaws.com/
  */
-object NetworkApi : BaseNetworkApi<INetworkService>("https://v0.yiketianqi.com/") {
+object NetworkApi : BaseNetworkApi<INetworkService>("https://fxvnv345tf.execute-api.ap-northeast-1.amazonaws.com/") {
 
-    suspend fun requestHomeInfo() = getResult {
-        service.requestHomeInfo()
+    suspend fun requestHistoryInfo() = getResult {
+        service.requestHistoryInfo()
     }
 }

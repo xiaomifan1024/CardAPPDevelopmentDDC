@@ -41,7 +41,10 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
                 dateview.setText(d.date)
                 priceView.setText(d.price)
             }
-            var adapter = HistoryListViewAdapter(R.layout.history_list_item,it.dataList,init)
+            var adapter = it.getOrNull()?.let { it1 ->
+                HistoryListViewAdapter(R.layout.history_list_item,
+                    it1.dataList,init)
+            }
             historyListView.layoutManager= LinearLayoutManager(getActivity())
             historyListView.adapter=adapter
 

@@ -8,6 +8,5 @@ import java.util.*
 data class BaseResponse<T>(
     var code: Int = 0,
     val msg: String? = null,
-    val redirect: String? = null,
     val data: T? = null
 )

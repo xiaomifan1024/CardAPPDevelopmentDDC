@@ -5,8 +5,6 @@ import android.graphics.Canvas
 import android.graphics.Bitmap
 import android.graphics.Color
 
-import java.io.FileOutputStream
-
 import com.google.zxing.WriterException
 
 import com.google.zxing.BarcodeFormat

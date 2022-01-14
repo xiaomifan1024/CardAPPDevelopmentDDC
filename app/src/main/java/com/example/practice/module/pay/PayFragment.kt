@@ -37,11 +37,12 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
     private fun initView() {
         val imageView: ImageView = viewBinding.textPay
         var qrCode = QRCodeUtil()
-        var bimap: Bitmap? = qrCode.createQRImage("ContentText", 300, 300,
+        var bimap: Bitmap? = qrCode.createQRImage("https://payapp.weixin.qq.com/materialqr/entry/home?id=065452545384977", 300, 300,
             null)
         payViewModel.text.observe(viewLifecycleOwner, Observer {
             imageView.setImageBitmap(bimap)
         })
+
     }
 
 

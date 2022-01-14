@@ -3,13 +3,14 @@ package com.example.practice.json
 import android.content.Context
 import android.util.Log
 import com.example.practice.network.base.BaseNetworkApi
+import com.example.practice.network.base.BaseResponse
 import com.google.gson.Gson
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.io.InputStream
 
 class ReadJsonFile(var fileName: String) {
-    fun <T> getHistoryListData(context: Context,classOfT: Class<T>? ): T? {
+    fun <T> getHistoryListData(context: Context,classOfT: Class<T>):T? {
         var gson = Gson()
         var `is`: InputStream? = null
         var bos: ByteArrayOutputStream? = null

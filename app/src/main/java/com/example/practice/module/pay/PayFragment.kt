@@ -1,49 +1,79 @@
 package com.example.practice.module.pay
 
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.practice.R
 import com.example.practice.base.BaseFragment
-import com.example.practice.databinding.FragmentHomeBinding
-import com.example.practice.databinding.FragmentNotificationsBinding
 import com.example.practice.databinding.FragmentPayBinding
-import com.example.practice.module.home.HomeViewModel
-import com.example.practice.module.notifications.NotificationsViewModel
+import android.view.animation.LinearInterpolator
+import android.view.animation.AnimationUtils
+import android.widget.Toast
+import com.example.practice.R
 import com.example.practice.utils.QRCodeUtil
+import java.io.File
 
-class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate) {
+class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate),View.OnClickListener {
 
     private lateinit var payViewModel: PayViewModel
-
+    private lateinit var filePath:String
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initData()
         initView()
     }
     private fun initData() {
+        filePath=(context?.filesDir?.absolutePath.toString() + File.separator
+                + "qr_" + System.currentTimeMillis() + ".jpg")
         payViewModel =
             ViewModelProvider(this).get(PayViewModel::class.java)
     }
 
     private fun initView() {
         val imageView: ImageView = viewBinding.textPay
-        var qrCode = QRCodeUtil()
-        var bimap: Bitmap? = qrCode.createQRImage("https://payapp.weixin.qq.com/materialqr/entry/home?id=065452545384977", 300, 300,
-            null)
+        val gifView: ImageView = viewBinding.refresh
+        var isCreated =createQRCode()
         payViewModel.text.observe(viewLifecycleOwner, Observer {
-            imageView.setImageBitmap(bimap)
+            if(isCreated) {
+                val resultBitmap = BitmapFactory.decodeFile(filePath)
+                imageView.setImageBitmap(resultBitmap)
+            }else {
+                Toast.makeText(context, "QRCodeを作成できません" , Toast.LENGTH_SHORT).show()
+                imageView.setImageResource(R.mipmap.failed)
+            }
         })
+        gifView.setOnClickListener(this)
 
     }
+    override fun onClick(p0: View?) {
+        when (p0) {
+            is ImageView->{
+                var myAlphaAnimation = AnimationUtils.loadAnimation(context, R.anim.refresh)
+                myAlphaAnimation.interpolator = LinearInterpolator()
+                this.viewBinding.refresh.startAnimation(myAlphaAnimation)
+                Thread {
+                    Thread.sleep(1000)
+                    var success =createQRCode()
+                    if (success) {
+                        getActivity()?.runOnUiThread {
+                            val resultBitmap = BitmapFactory.decodeFile(filePath)
+                            this.viewBinding.textPay.setImageBitmap(resultBitmap)
+                            this.viewBinding.refresh.clearAnimation()
+                        }
+                    }
+                }.start()
+            }
+        }
+    }
 
+    private fun createQRCode(): Boolean {
+        var qrCode = QRCodeUtil()
+        return qrCode.createQRImage(
+            "https://payapp.weixin.qq.com/materialqr/entry/home?id=065452545384977", 300, 300,
+            null, filePath
+        )
+    }
 
 }

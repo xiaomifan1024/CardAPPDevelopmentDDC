@@ -16,17 +16,18 @@ import com.google.zxing.common.BitMatrix
 import com.google.zxing.EncodeHintType
 
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
+import java.io.FileOutputStream
 
 import java.util.HashMap
 
 class QRCodeUtil {
     fun createQRImage(
         content: String?, widthPix: Int, heightPix: Int,
-        logoBm: Bitmap?
-    ): Bitmap? {
+        logoBm: Bitmap?,filePath:String
+    ): Boolean {
         try {
             if (content == null || "" == content) {
-                return null
+                return false
             }
 
             //パラメーターを配置する
@@ -68,12 +69,13 @@ class QRCodeUtil {
             }
 
             //compressメソッドを使用してbitmapをファイルに保存してから読み込む必要があります。直接返されるbitmapには圧縮はありません。
-            return bitmap
+            return bitmap != null && bitmap.compress(Bitmap.CompressFormat.JPEG, 100,  FileOutputStream(filePath))
 
         } catch (e: Exception) {
             e.printStackTrace()
+            return false
         }
-        return null
+        return false
     }
 
     /**

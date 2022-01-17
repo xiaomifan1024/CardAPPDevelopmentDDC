@@ -26,7 +26,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
     private fun initData() {
         historyViewModel =
             ViewModelProvider(this).get(HistoryViewModel::class.java)
-        getActivity()?.let { historyViewModel.getHistoryList(it.getApplicationContext()) }
+        getActivity()?.let { historyViewModel.getHistoryList(it.applicationContext) }
     }
 
     private fun initView() {

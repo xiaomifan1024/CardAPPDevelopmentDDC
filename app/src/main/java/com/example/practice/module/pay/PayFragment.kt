@@ -71,7 +71,7 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
     private fun createQRCode(): Boolean {
         var qrCode = QRCodeUtil()
         return qrCode.createQRImage(
-            "https://payapp.weixin.qq.com/materialqr/entry/home?id=065452545384977", 300, 300,
+            "https://payapp.weixin.qq.com/materialqr/entry/home?id=065452545384977"+System.currentTimeMillis(), 300, 300,
             null, filePath
         )
     }

@@ -25,8 +25,8 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
 
     private fun initData() {
         historyViewModel =
-            ViewModelProvider(this).get(HistoryViewModel::class.java)
-        getActivity()?.let { historyViewModel.getHistoryList(it.applicationContext) }
+            ViewModelProvider(this)[HistoryViewModel::class.java]
+        getActivity()?.let { historyViewModel.getHistoryList() }
     }
 
     private fun initView() {
@@ -37,9 +37,9 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
                 var addressView = v.findViewById<TextView>(R.id.address)
                 var dateview=v.findViewById<TextView>(R.id.time)
                 var priceView=v.findViewById<TextView>(R.id.price)
-                addressView.setText(d.address)
-                dateview.setText(d.date)
-                priceView.setText(d.price)
+                addressView.text = d.address
+                dateview.text = d.date
+                priceView.text = d.price
             }
                 //get from networkapi
             var adapter = it.getOrNull()?.let { it1 ->

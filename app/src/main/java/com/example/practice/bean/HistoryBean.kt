@@ -1,10 +1,7 @@
 package com.example.practice.bean
 
 data class HistoryBean(
-    val dataList: List<Data>,
-    val dateEnd: String,
-    val dateStart: String,
-    val name: String
+    val dataList: List<Data>
 )
 
 data class Data(

@@ -19,7 +19,7 @@ class HistoryViewModel : ViewModel() {
     }
     val text: LiveData<String> = _text
 
-    fun getHistoryList(context: Context) {
+    fun getHistoryList() {
         viewModelScope.launch {
             // read data from jsonfile
 //            val resultFromFile = readJsonFile.getHistoryListData(context, HistoryDataGet::class.java)

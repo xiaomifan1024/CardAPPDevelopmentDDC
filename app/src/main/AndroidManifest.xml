@@ -27,7 +27,7 @@
         </service>
 
         <activity
-            android:name=".module.charge.ChargeActivity"
+            android:name="com.example.practice.module.pay.charge.ChargeActivity"
             android:exported="false" />
         <activity
             android:name=".module.MainActivity"

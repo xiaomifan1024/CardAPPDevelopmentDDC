@@ -1,17 +1,14 @@
 package com.example.practice.module
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.navigation.findNavController
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.practice.R
 import com.example.practice.base.BaseActivity
 import com.example.practice.databinding.ActivityMainBinding
-import com.example.practice.module.charge.ChargeActivity
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {

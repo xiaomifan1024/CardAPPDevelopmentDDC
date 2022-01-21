@@ -16,7 +16,7 @@ import java.io.File
 import android.os.CountDownTimer
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.example.practice.module.charge.ChargeActivity
+import com.example.practice.module.pay.charge.ChargeActivity
 import com.example.practice.R
 
 

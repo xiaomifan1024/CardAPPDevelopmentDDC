@@ -1,4 +1,4 @@
-package com.example.practice.module.charge
+package com.example.practice.module.pay.charge
 
 import androidx.lifecycle.ViewModel
 

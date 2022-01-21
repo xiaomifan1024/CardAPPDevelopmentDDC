@@ -7,7 +7,9 @@
     tools:context=".module.pay.PayFragment"
     >
 
-    <include layout="@layout/title_layout"/>
+    <include
+        android:id="@+id/title_pay"
+        layout="@layout/title_layout" />
 
     <LinearLayout
         android:id="@+id/code"

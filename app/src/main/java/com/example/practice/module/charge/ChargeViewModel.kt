@@ -1,4 +1,6 @@
 package com.example.practice.module.charge
 
-class ChargeViewModel {
+import androidx.lifecycle.ViewModel
+
+class ChargeViewModel : ViewModel()  {
 }

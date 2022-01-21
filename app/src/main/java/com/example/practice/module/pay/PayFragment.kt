@@ -1,24 +1,23 @@
 package com.example.practice.module.pay
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.practice.base.BaseFragment
 import com.example.practice.databinding.FragmentPayBinding
 import android.view.animation.LinearInterpolator
 import android.view.animation.AnimationUtils
 import android.widget.Toast
-import com.example.practice.R
 import com.example.practice.utils.QRCodeUtil
 import java.io.File
-
-
 import android.os.CountDownTimer
-
-
+import android.widget.RelativeLayout
+import android.widget.TextView
+import com.example.practice.module.charge.ChargeActivity
+import com.example.practice.R
 
 
 class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate),View.OnClickListener {
@@ -44,6 +43,8 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
 
     private fun initView() {
         val imageView: ImageView = viewBinding.refresh
+        val chargeRl: RelativeLayout = viewBinding.chargeRl
+        val titleView: TextView = viewBinding.titlePay.title
         //QRCodeを作成
         var isCreated =createQRCode()
         payViewModel.text.observe(viewLifecycleOwner, {
@@ -56,6 +57,13 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
         })
         imageView.setOnClickListener(this)
         countDownTimer.start()
+        //チャージ画面へ遷移
+        chargeRl.setOnClickListener {
+            var intent = Intent(this.getActivity(), ChargeActivity().javaClass)
+            startActivity(intent)
+        }
+        titleView.text=resources.getString(R.string.title_pay)
+        titleView.setTextColor(resources.getColor(R.color.white,null))
 
     }
     override fun onClick(p0: View?) {

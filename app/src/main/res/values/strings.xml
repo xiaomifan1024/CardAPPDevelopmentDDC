@@ -10,4 +10,10 @@
     <string name="pay_for_shop">お店に支払う</string>
     <string name="left_money">残高</string>
     <string name="recharge">チャージ</string>
+    <string name="msg_token_fmt">Get new FCM registration token</string>
+    <string name="default_notification_channel_id">12345678</string>
+    <string name="default_notification_channel_name">channel</string>
+    <string name="msg_subscribed">購読に成功しました</string>
+    <string name="msg_subscribe_failed">購読に失敗しました</string>
+    <string name="fcm_message">通知支払い</string>
 </resources>

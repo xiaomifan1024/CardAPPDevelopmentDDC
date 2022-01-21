@@ -35,5 +35,4 @@ abstract class BaseFragment<T : ViewBinding>(val inflater: (inflater: LayoutInfl
         super.onDestroyView()
     }
 
-
 }

@@ -1,5 +1,6 @@
 package com.example.practice.module
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.navigation.findNavController
 
@@ -10,6 +11,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.practice.R
 import com.example.practice.base.BaseActivity
 import com.example.practice.databinding.ActivityMainBinding
+import com.example.practice.module.charge.ChargeActivity
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
@@ -32,7 +34,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 R.id.navigation_settings
             )
         )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
+//       setupActionBarWithNavController(navController, appBarConfiguration)
         navView.labelVisibilityMode= BottomNavigationView.LABEL_VISIBILITY_LABELED
         navView.setupWithNavController(navController)
     }

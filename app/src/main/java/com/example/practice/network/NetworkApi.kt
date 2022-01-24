@@ -15,4 +15,8 @@ object NetworkApi : BaseNetworkApi<INetworkService>("https://d664bb3e-e2c0-4643-
     suspend fun requestLeftMoney() = getResult {
         service.requestLeftMoney()
     }
+    //お知らせAPIをコール
+    suspend fun requestNotificationInfo() = getResult {
+        service.requestNotificationInfo()
+    }
 }

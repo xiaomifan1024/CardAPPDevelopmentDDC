@@ -7,4 +7,8 @@ class NetworkApiTest(url:String) : BaseNetworkApi<INetworkService>(url){
     suspend fun requestLeftMoney() = getResult {
         service.requestLeftMoney()
     }
+    //お知らせAPIをコール
+    suspend fun requestNotificationInfo() = getResult {
+        service.requestNotificationInfo()
+    }
 }

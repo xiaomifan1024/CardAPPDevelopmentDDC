@@ -46,13 +46,6 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
                 HistoryListViewAdapter(R.layout.history_list_item,
                     it1.dataList,init)
             }
-                //get from json file
-//           var adapter = it.let { it1 ->
-//               it1.data?.let { it2 ->
-//                   HistoryListViewAdapter(R.layout.history_list_item,
-//                      it2.dataList,init)
-//               }
-//            }
             historyListView.layoutManager= LinearLayoutManager(getActivity())
             historyListView.adapter=adapter
 

@@ -79,15 +79,15 @@
             android:imeOptions="actionDone"
             android:digits="1234567890"
             android:textSize="30sp" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/light_gray"
             android:layout_below="@id/charge_input"
-            android:layout_marginTop="@dimen/size_10"
             android:layout_marginStart="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_10"
             android:layout_marginEnd="@dimen/size_20"
-            />
+            android:background="@color/light_gray" />
 
     </RelativeLayout>
 

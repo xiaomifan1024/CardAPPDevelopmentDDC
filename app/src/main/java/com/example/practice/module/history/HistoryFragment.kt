@@ -1,5 +1,6 @@
 package com.example.practice.module.history
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -11,6 +12,8 @@ import com.example.practice.R
 import com.example.practice.base.BaseFragment
 import com.example.practice.bean.Data
 import com.example.practice.databinding.FragmentHistoryBinding
+import com.example.practice.module.history.graph.HistoryGraphActivity
+import com.example.practice.module.pay.charge.ChargeActivity
 import com.example.practice.network.NetworkApi
 
 class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBinding::inflate) {
@@ -48,6 +51,10 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
             }
             historyListView.layoutManager= LinearLayoutManager(getActivity())
             historyListView.adapter=adapter
+            viewBinding.titleGraph.titleHistoryShowGraph.setOnClickListener{
+                var intent = Intent(this.getActivity(), HistoryGraphActivity().javaClass)
+                startActivity(intent)
+            }
 
         })
     }

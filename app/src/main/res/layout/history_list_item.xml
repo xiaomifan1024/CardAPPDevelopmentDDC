@@ -17,21 +17,25 @@
             android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="18dp"
             />
         <TextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:textSize="18dp"
            />
     </LinearLayout>
     <TextView
         android:id="@+id/price"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
+        android:textSize="18dp"
         android:layout_weight="1"
+        android:textColor="@color/black"
         android:layout_marginTop="12dp"
         android:gravity="end"
         />

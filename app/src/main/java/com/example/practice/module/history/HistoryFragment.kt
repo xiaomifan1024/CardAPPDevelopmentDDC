@@ -3,6 +3,7 @@ package com.example.practice.module.history
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,8 +14,7 @@ import com.example.practice.base.BaseFragment
 import com.example.practice.bean.Data
 import com.example.practice.databinding.FragmentHistoryBinding
 import com.example.practice.module.history.graph.HistoryGraphActivity
-import com.example.practice.module.pay.charge.ChargeActivity
-import com.example.practice.network.NetworkApi
+
 
 class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBinding::inflate) {
 
@@ -33,8 +33,9 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
     }
 
     private fun initView() {
-
         val historyListView: RecyclerView = viewBinding.listView
+        val graphView: ImageView = viewBinding.titleGraph.titleHistoryShowGraph
+        graphView.setImageResource(R.mipmap.pie_chart)
         historyViewModel.historyListLiveData.observe(viewLifecycleOwner, Observer {
             var init: (View, Data) -> Unit = {v:View,d:Data ->
                 var addressView = v.findViewById<TextView>(R.id.address)
@@ -44,19 +45,20 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
                 dateview.text = d.date
                 priceView.text = d.price
             }
-                //get from networkapi
+            //get from networkApi
             var adapter = it.getOrNull()?.let { it1 ->
                 HistoryListViewAdapter(R.layout.history_list_item,
                     it1.dataList,init)
             }
             historyListView.layoutManager= LinearLayoutManager(getActivity())
             historyListView.adapter=adapter
-            viewBinding.titleGraph.titleHistoryShowGraph.setOnClickListener{
-                var intent = Intent(this.getActivity(), HistoryGraphActivity().javaClass)
-                startActivity(intent)
-            }
 
         })
+        //グラフ画面へ遷移
+        graphView.setOnClickListener{
+            var intent = Intent(this.getActivity(), HistoryGraphActivity().javaClass)
+            startActivity(intent)
+        }
     }
 
 }

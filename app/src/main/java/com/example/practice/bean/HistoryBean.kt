@@ -1,11 +1,13 @@
 package com.example.practice.bean
 
+import java.io.Serializable
+
 data class HistoryBean(
-    val dataList: List<Data>
+    var dataList: List<Data>
 )
 
-data class Data(
-    val address: String,
-    val date: String,
-    val price: String
-)
+data class Data (
+    var address: String,
+    var date: String,
+    var price: String
+):Serializable

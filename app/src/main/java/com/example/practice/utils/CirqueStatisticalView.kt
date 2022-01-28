@@ -115,8 +115,8 @@ class CirqueStatisticalView(context: Context?, @Nullable attrs: AttributeSet?, d
         var rectWidth = 0f//毎回描く四角の幅
         var width = 0f //四角いの幅+文字の幅
         val point = mRadius/2-totalWidth/2-40 //文字描画の開始点
-        var leftP: Float //四角の左点
-        var rightP: Float //四角の右点
+        var leftP = 0f //四角の左点
+        var rightP = 0f //四角の右点
         for (item in items!!)  {
             start++
             //四角パステルカラーを描く
@@ -132,6 +132,15 @@ class CirqueStatisticalView(context: Context?, @Nullable attrs: AttributeSet?, d
             rectWidth += 20
             textWidth += textPaint!!.measureText(item.contentText)
             width = rectWidth + textWidth + 10
+        }
+        if(total < 100){
+            start++
+            leftP = point+width+30*start
+            rightP = leftP+20
+             canvas.drawText("その他", ( rightP+10f),  mRadius+mStrokeWidth+20f, textPaint!!)
+            labelPaint!!.color = 0xFF888888.toInt()
+            val rect = RectF(leftP, (mRadius+mStrokeWidth), rightP,  (mRadius+mStrokeWidth+20f))
+            canvas.drawRect(rect, labelPaint!!)
         }
     }
     /**

@@ -151,6 +151,7 @@ class CirqueStatisticalView(context: Context?, @Nullable attrs: AttributeSet?, d
         for (item in items) {
             totalWidth += textPaint!!.measureText(item.contentText)+40
         }
+        totalWidth += textPaint!!.measureText("その他")+40
         return totalWidth
     }
     /**

@@ -37,25 +37,20 @@ class HistoryGraphActivity : BaseActivity<ActivityHistoryGraphBinding>(ActivityH
         graphView.setItems(circleData)
     }
 
-    private fun initData(){
-        circleData.add(CircleDataBean(20, "ルミネ新宿",  getColor(R.color.light_pink)))
-        circleData.add(CircleDataBean(23, "アトレ吉祥寺", getColor(R.color.light_yellow)))
-        circleData.add(CircleDataBean(33, "〇〇〇",  getColor(R.color.blue)))
-        circleData.add(CircleDataBean(25, "その他",  getColor(R.color.gray)))
-    }
 
     private fun dummyData(){
         val bundle = this.intent.extras
-        var price =1
+        var i =1
         arrayList = bundle?.getSerializable("historyData") as MutableList<Data>
+
         var map = mutableMapOf<String, Int>()
         for (item in arrayList){
             if(map[item.address] == null){
-                price =1
-                map[item.address] = price
+                i =1
+                map[item.address] =  i
             }else{
                 var currentPrice = map[item.address]
-                map[item.address] = price + currentPrice!!
+                map[item.address] =  i + currentPrice!!
             }
         }
 

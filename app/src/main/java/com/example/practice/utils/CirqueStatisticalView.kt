@@ -50,8 +50,8 @@ class CirqueStatisticalView(context: Context?, @Nullable attrs: AttributeSet?, d
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas.translate(mWidth / 2 - mRadius / 2, mHeight / 2 - mRadius / 2);
-        //パステルカラー初期化
+        canvas.translate(mWidth / 2 - mRadius / 2, mHeight / 2 - mRadius / 2)
+        //絵筆初期化
         initPaint()
         //円環を描く
         drawCycle(canvas)
@@ -82,7 +82,7 @@ class CirqueStatisticalView(context: Context?, @Nullable attrs: AttributeSet?, d
      * 円環を描く
      */
     private fun drawCycle(canvas: Canvas) {
-        var startPercent = 0f
+        var startPercent = 270f //円弧の始点
         var sweepPercent = 0f
         for (item in items!!) {
             cyclePaint!!.color = item.color

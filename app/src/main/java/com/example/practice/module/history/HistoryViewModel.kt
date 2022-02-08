@@ -10,22 +10,12 @@ import com.example.practice.network.NetworkApi
 import kotlinx.coroutines.launch
 
 class HistoryViewModel : ViewModel() {
-//    private val jsonFileName = "getHistoryData.json"
     val historyListLiveData = MutableLiveData<Result<HistoryBean>>()
-//    val historyFromJsonFile= MutableLiveData<HistoryDataGet>()// read data from jsonfile
-//    private var readJsonFile= ReadJsonFile(jsonFileName)// read data from jsonfile
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is History Fragment"
-    }
-    val text: LiveData<String> = _text
 
-    fun getHistoryList() {
+    fun getHistoryList(startDate:String,endDate:String) {
         viewModelScope.launch {
-            // read data from jsonfile
-//            val resultFromFile = readJsonFile.getHistoryListData(context, HistoryDataGet::class.java)
-//            historyFromJsonFile.value=resultFromFile!!// read data from jsonfile
             // read data from networkapi
-            val resultFromNetwork = NetworkApi.requestHistoryInfo()
+            val resultFromNetwork = NetworkApi.requestHistoryInfo(startDate,endDate)
             historyListLiveData.value=resultFromNetwork
         }
     }

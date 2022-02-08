@@ -1,6 +1,8 @@
 package com.example.practice.module.history
 
+import android.app.DatePickerDialog
 import android.content.Intent
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -15,16 +17,13 @@ import com.example.practice.bean.Data
 import com.example.practice.bean.HistoryBean
 import com.example.practice.databinding.FragmentHistoryBinding
 import com.example.practice.module.history.graph.HistoryGraphActivity
-import java.io.Serializable
 import java.util.ArrayList
-
-
-
-
 
 class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBinding::inflate) {
 
     private lateinit var historyViewModel: HistoryViewModel
+    private var startDate = "2021年12月1日"
+    private var endDate = "2021年12月31日"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,12 +34,16 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
     private fun initData() {
         historyViewModel =
             ViewModelProvider(this)[HistoryViewModel::class.java]
-        getActivity()?.let { historyViewModel.getHistoryList() }
+        getActivity()?.let { historyViewModel.getHistoryList(startDate,endDate) }
     }
 
     private fun initView() {
         val historyListView: RecyclerView = viewBinding.listView
         val graphView: ImageView = viewBinding.titleGraph.titleHistoryShowGraph
+        val endTv: TextView = viewBinding.titleGraph.dateEnd
+        val startTv: TextView = viewBinding.titleGraph.dateStart
+        startTv.text = startDate
+        endTv.text = endDate
         val historyDataList: ArrayList<HistoryBean> = ArrayList<HistoryBean>()
         graphView.setImageResource(R.mipmap.pie_chart)
         historyViewModel.historyListLiveData.observe(viewLifecycleOwner, Observer {
@@ -87,6 +90,35 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
             intent.putExtras(bundle)
             startActivity(intent)
         }
+        //startDateを選択
+        startTv.setOnClickListener {
+            showDatePickerDialog(startTv)
+        }
+        //endDateを選択
+        endTv.setOnClickListener {
+            showDatePickerDialog(endTv)
+        }
     }
 
+    private fun showDatePickerDialog(tv:TextView) {
+        val ca = Calendar.getInstance()
+        var mYear = ca[Calendar.YEAR]
+        var mMonth = ca[Calendar.MONTH]
+        var mDay = ca[Calendar.DAY_OF_MONTH]
+
+        val datePickerDialog = context?.let {
+            DatePickerDialog(
+                it,
+                 { _, year, month, dayOfMonth ->
+                    mYear = year
+                    mMonth = month
+                    mDay = dayOfMonth
+                     val mDate = "${year}年${month + 1}月${dayOfMonth}日"
+                     tv.text = mDate
+                },
+                mYear, mMonth, mDay
+            )
+        }
+        datePickerDialog?.show()
+    }
 }

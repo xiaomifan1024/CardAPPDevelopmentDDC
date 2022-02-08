@@ -64,36 +64,33 @@
         <TextView
             android:id="@+id/date_start"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:background="@color/gray"
-            android:textSize="20dp"
+            android:textSize="16dp"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
             android:text="～"
             android:layout_gravity="center"
-            android:layout_marginStart="20dp"
             android:textAlignment="center"
             android:layout_weight="1"
-            android:textSize="20dp"
+            android:textSize="16dp"
             />
         <TextView
             android:id="@+id/date_end"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_marginEnd="24dp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@color/gray"
             android:gravity="center"
-            android:textSize="20dp"
+            android:textSize="16dp"
             />
     </LinearLayout>
 

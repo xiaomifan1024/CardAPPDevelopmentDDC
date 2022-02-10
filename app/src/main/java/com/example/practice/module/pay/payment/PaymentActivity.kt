@@ -67,6 +67,7 @@ class PaymentActivity : BaseActivity<ActivityPaymentBinding>(ActivityPaymentBind
                 var intent = Intent(this, PayCompletedActivity().javaClass)
                 intent.putExtras(bundle)
                 startActivity(intent)
+                finish()
             }
         })
     }

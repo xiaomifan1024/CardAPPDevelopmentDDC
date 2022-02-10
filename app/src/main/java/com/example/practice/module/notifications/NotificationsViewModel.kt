@@ -14,7 +14,7 @@ class NotificationsViewModel : ViewModel() {
     val notificationsListLiveData = MutableLiveData<Result<NotificationBean>>()
     fun getNotificationsList() {
         viewModelScope.launch {
-            val notificationsData= NetworkApiTest("https://b189a1a1-137d-468c-ad1e-ecadfcd7391e.mock.pstmn.io")
+            val notificationsData= NetworkApiTest("https://bcc44455-3c2c-4c72-b417-470a1c5e2842.mock.pstmn.io")
             val requestValue=notificationsData.requestNotificationInfo()
             notificationsListLiveData.value=requestValue
         }

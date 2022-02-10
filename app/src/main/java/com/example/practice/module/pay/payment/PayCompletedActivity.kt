@@ -20,21 +20,19 @@ class PayCompletedActivity : BaseActivity<ActivityPayCompletedBinding>(ActivityP
         val idFrom = viewBinding.idFrom
         val itTo = viewBinding.idTo
         val money = viewBinding.money
-        val date = viewBinding.date
         val time = viewBinding.time
         val hash = viewBinding.hash
-        val success = viewBinding.success
+//        val success = viewBinding.success
         val titleBar = viewBinding.titlePay.titleBtn
 
         val bundle = this.intent.extras
         val payInfo = bundle?.getSerializable("data") as Result<PayResponseBean>
         idFrom.text = payInfo.getOrNull()?.payInfo?.id_from.toString()
         itTo.text = payInfo.getOrNull()?.payInfo?.id_to.toString()
-        money.text = payInfo.getOrNull()?.payInfo?.money.toString()
-        date.text = payInfo.getOrNull()?.payInfo?.date
-        time.text = payInfo.getOrNull()?.payInfo?.time
+        money.text = payInfo.getOrNull()?.payInfo?.money.toString()+"円"
+        time.text = payInfo.getOrNull()?.payInfo?.date+" "+payInfo.getOrNull()?.payInfo?.time
         hash.text = payInfo.getOrNull()?.payInfo?.hash
-        success.text = payInfo.getOrNull()?.payInfo?.success.toString()
+//        success.text = payInfo.getOrNull()?.payInfo?.success.toString()
         titleBar.visibility = View.VISIBLE
         titleBar.setOnClickListener {
             finish()

@@ -1,41 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray"
-    android:orientation="vertical">
-
-    <include android:id="@+id/title_pay" layout="@layout/title_layout"/>
+   >
+    <include android:id="@+id/title_pay"
+        layout="@layout/title_layout"/>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/corners_top_bg"
-        android:layout_marginTop="@dimen/size_30"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corners_white_bg"
+        android:layout_marginTop="@dimen/size_20"
         android:layout_marginStart="@dimen/size_10"
         android:layout_marginEnd="@dimen/size_10"
-        android:layout_marginBottom="@dimen/size_30"
+        android:layout_centerInParent="true"
         >
 
+        <ImageView
+            android:id="@+id/doneImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size_30"
+            android:background="@mipmap/done" />
+
+        <TextView
+            android:id="@+id/pay_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/doneImg"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_20"
+            android:text="アトレ吉祥寺へお支払い"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/money_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pay_from"
+            android:layout_marginStart="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_30"
+            android:layout_marginEnd="@dimen/size_10"
+            android:text="お支払額"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_20" />
+        <TextView
+            android:id="@+id/money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/money_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/size_10"
+            android:textColor="@color/black"
+            android:text="aaa"
+            android:textSize="35dp" />
+        <TextView
+            android:id="@+id/date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_20"
+            android:layout_toStartOf="@id/time"
+            android:layout_marginEnd="@dimen/size_10"
+            android:text="処理実行時間:"
+            android:layout_alignBaseline="@+id/time"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/money_text"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="@dimen/size_10"
+            android:layout_marginTop="@dimen/size_20"
+            android:layout_marginEnd="@dimen/size_20"
+            android:text="aa"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/time"
+            android:layout_marginStart="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_20"
+            android:layout_marginEnd="@dimen/size_20"
+            android:background="@color/light_gray" />
         <TextView
             android:id="@+id/idFrom_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_20"
             android:layout_marginTop="@dimen/size_30"
+            android:layout_below="@+id/view"
             android:text="送金元のID:"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/idFrom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/idFrom_text"
-            android:layout_toEndOf="@+id/idFrom_text"
             android:layout_marginStart="@dimen/size_10"
-            android:textColor="@color/black"
+            android:layout_toEndOf="@+id/idFrom_text"
             android:text="aaa"
-            android:textSize="@dimen/size_20" />
+            android:textColor="@color/black"
+            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/idTo_text"
@@ -45,9 +120,9 @@
             android:layout_marginStart="@dimen/size_20"
             android:layout_marginTop="@dimen/size_20"
             android:layout_marginEnd="@dimen/size_10"
+            android:text="送金先のID:"
             android:textColor="@color/black"
-            android:textSize="@dimen/size_20"
-            android:text="送金先のID:"/>
+            android:textSize="15dp" />
         <TextView
             android:id="@+id/idTo"
             android:layout_width="wrap_content"
@@ -57,77 +132,12 @@
             android:layout_marginStart="@dimen/size_10"
             android:textColor="@color/black"
             android:text="aaa"
-            android:textSize="@dimen/size_20" />
-
-        <TextView
-            android:id="@+id/money_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/idTo_text"
-            android:layout_marginStart="@dimen/size_20"
-            android:layout_marginTop="@dimen/size_20"
-            android:layout_marginEnd="@dimen/size_10"
-            android:textColor="@color/black"
-            android:textSize="@dimen/size_20"
-            android:text="送金先へ送る金額:"/>
-        <TextView
-            android:id="@+id/money"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/money_text"
-            android:layout_toEndOf="@+id/money_text"
-            android:layout_marginStart="@dimen/size_10"
-            android:textColor="@color/black"
-            android:text="aaa"
-            android:textSize="@dimen/size_20" />
-
-        <TextView
-            android:id="@+id/date_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/money_text"
-            android:layout_marginStart="@dimen/size_20"
-            android:layout_marginTop="@dimen/size_20"
-            android:layout_marginEnd="@dimen/size_10"
-            android:text="処理実行日(YYYY/MM/DD):"
-            android:textColor="@color/black"
             android:textSize="15dp" />
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/date_text"
-            android:layout_toEndOf="@+id/date_text"
-            android:layout_marginStart="@dimen/size_10"
-            android:textColor="@color/black"
-            android:text="aaa"
-            android:textSize="15dp" />
-        <TextView
-            android:id="@+id/time_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/date_text"
-            android:layout_marginStart="@dimen/size_20"
-            android:layout_marginTop="@dimen/size_20"
-            android:layout_marginEnd="@dimen/size_10"
-            android:textColor="@color/black"
-            android:textSize="@dimen/size_20"
-            android:text="処理実行時間(HH:MM):"/>
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/time_text"
-            android:layout_toEndOf="@+id/time_text"
-            android:layout_marginStart="@dimen/size_10"
-            android:textColor="@color/black"
-            android:text="aaa"
-            android:textSize="@dimen/size_20" />
         <TextView
             android:id="@+id/hash_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/time_text"
+            android:layout_below="@id/idTo_text"
             android:layout_marginStart="@dimen/size_20"
             android:layout_marginTop="@dimen/size_20"
             android:layout_marginEnd="@dimen/size_10"
@@ -141,31 +151,171 @@
             android:layout_alignBaseline="@+id/hash_text"
             android:layout_toEndOf="@+id/hash_text"
             android:layout_marginStart="@dimen/size_10"
+            android:layout_marginBottom="@dimen/size_20"
             android:textColor="@color/black"
             android:text="aaa"
             android:textSize="10dp" />
-        <TextView
-            android:id="@+id/success_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/hash_text"
-            android:layout_marginStart="@dimen/size_20"
-            android:layout_marginTop="@dimen/size_20"
-            android:layout_marginEnd="@dimen/size_10"
-            android:textColor="@color/black"
-            android:textSize="@dimen/size_20"
-            android:text="成功/失敗:"/>
-        <TextView
-            android:id="@+id/success"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/success_text"
-            android:layout_toEndOf="@+id/success_text"
-            android:layout_marginStart="@dimen/size_10"
-            android:textColor="@color/black"
-            android:text="aaa"
-            android:textSize="@dimen/size_20" />
+
+        <!--        <TextView-->
+<!--            android:id="@+id/idTo"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignBaseline="@+id/idTo_text"-->
+<!--            android:layout_toEndOf="@+id/idFrom_text"-->
+<!--            android:layout_marginStart="@dimen/size_10"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:text="aaa"-->
+<!--            android:textSize="@dimen/size_20" />-->
+<!--        <TextView-->
+<!--            android:id="@+id/idFrom_text"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="@dimen/size_20"-->
+<!--            android:layout_marginTop="@dimen/size_30"-->
+<!--            android:text="送金元のID:"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="20sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/idFrom"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignBaseline="@+id/idFrom_text"-->
+<!--            android:layout_toEndOf="@+id/idFrom_text"-->
+<!--            android:layout_marginStart="@dimen/size_10"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:text="aaa"-->
+<!--            android:textSize="@dimen/size_20" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/idTo_text"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/idFrom_text"-->
+<!--            android:layout_marginStart="@dimen/size_20"-->
+<!--            android:layout_marginTop="@dimen/size_20"-->
+<!--            android:layout_marginEnd="@dimen/size_10"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="@dimen/size_20"-->
+<!--            android:text="送金先のID:"/>-->
+<!--        <TextView-->
+<!--            android:id="@+id/idTo"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignBaseline="@+id/idTo_text"-->
+<!--            android:layout_toEndOf="@+id/idFrom_text"-->
+<!--            android:layout_marginStart="@dimen/size_10"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:text="aaa"-->
+<!--            android:textSize="@dimen/size_20" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/money_text"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/idTo_text"-->
+<!--            android:layout_marginStart="@dimen/size_20"-->
+<!--            android:layout_marginTop="@dimen/size_20"-->
+<!--            android:layout_marginEnd="@dimen/size_10"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="@dimen/size_20"-->
+<!--            android:text="送金先へ送る金額:"/>-->
+<!--        <TextView-->
+<!--            android:id="@+id/money"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignBaseline="@+id/money_text"-->
+<!--            android:layout_toEndOf="@+id/money_text"-->
+<!--            android:layout_marginStart="@dimen/size_10"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:text="aaa"-->
+<!--            android:textSize="@dimen/size_20" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/date_text"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/money_text"-->
+<!--            android:layout_marginStart="@dimen/size_20"-->
+<!--            android:layout_marginTop="@dimen/size_20"-->
+<!--            android:layout_marginEnd="@dimen/size_10"-->
+<!--            android:text="処理実行日(YYYY/MM/DD):"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="15dp" />-->
+<!--        <TextView-->
+<!--            android:id="@+id/date"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignBaseline="@+id/date_text"-->
+<!--            android:layout_toEndOf="@+id/date_text"-->
+<!--            android:layout_marginStart="@dimen/size_10"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:text="aaa"-->
+<!--            android:textSize="15dp" />-->
+<!--        <TextView-->
+<!--            android:id="@+id/time_text"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/date_text"-->
+<!--            android:layout_marginStart="@dimen/size_20"-->
+<!--            android:layout_marginTop="@dimen/size_20"-->
+<!--            android:layout_marginEnd="@dimen/size_10"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="@dimen/size_20"-->
+<!--            android:text="処理実行時間(HH:MM):"/>-->
+<!--        <TextView-->
+<!--            android:id="@+id/time"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignBaseline="@+id/time_text"-->
+<!--            android:layout_toEndOf="@+id/time_text"-->
+<!--            android:layout_marginStart="@dimen/size_10"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:text="aaa"-->
+<!--            android:textSize="@dimen/size_20" />-->
+<!--        <TextView-->
+<!--            android:id="@+id/hash_text"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/time_text"-->
+<!--            android:layout_marginStart="@dimen/size_20"-->
+<!--            android:layout_marginTop="@dimen/size_20"-->
+<!--            android:layout_marginEnd="@dimen/size_10"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="15dp"-->
+<!--            android:text="ハッシュ値:"/>-->
+<!--        <TextView-->
+<!--            android:id="@+id/hash"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignBaseline="@+id/hash_text"-->
+<!--            android:layout_toEndOf="@+id/hash_text"-->
+<!--            android:layout_marginStart="@dimen/size_10"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:text="aaa"-->
+<!--            android:textSize="10dp" />-->
+<!--        <TextView-->
+<!--            android:id="@+id/success_text"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/hash_text"-->
+<!--            android:layout_marginStart="@dimen/size_20"-->
+<!--            android:layout_marginTop="@dimen/size_20"-->
+<!--            android:layout_marginEnd="@dimen/size_10"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="@dimen/size_20"-->
+<!--            android:text="成功/失敗:"/>-->
+<!--        <TextView-->
+<!--            android:id="@+id/success"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignBaseline="@+id/success_text"-->
+<!--            android:layout_toEndOf="@+id/success_text"-->
+<!--            android:layout_marginStart="@dimen/size_10"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:text="aaa"-->
+<!--            android:textSize="@dimen/size_20" />-->
 
     </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>

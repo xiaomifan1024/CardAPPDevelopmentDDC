@@ -17,6 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Practice">
         <activity
+            android:name=".module.pay.payment.PayCompletedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".module.pay.payment.PaymentActivity"
+            android:exported="false" />
+        <activity
             android:name=".module.history.graph.HistoryGraphActivity"
             android:exported="false" />
         <activity

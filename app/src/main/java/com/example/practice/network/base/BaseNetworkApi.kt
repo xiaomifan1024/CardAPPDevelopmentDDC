@@ -1,24 +1,17 @@
 package com.example.practice.network.base
 
 
-import android.content.Context
-import android.util.Log
 import com.example.practice.BuildConfig
-import com.example.practice.bean.HistoryBean
 import com.example.practice.constant.ErrorCode
 import com.example.practice.network.exception.NetworkException
 import com.example.practice.network.interceptor.CommonRequestInterceptor
 import com.example.practice.network.interceptor.CommonResponseInterceptor
-import com.google.gson.Gson
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-import java.io.InputStream
 import java.lang.reflect.ParameterizedType
 import java.util.concurrent.TimeUnit
 

@@ -17,4 +17,6 @@
     <string name="msg_subscribe_failed">購読に失敗しました</string>
     <string name="fcm_message">通知支払い</string>
     <string name="charge">チャージ方法</string>
+    <string name="pay_money">支払う</string>
+    <string name="pay_to">支払う方：</string>
 </resources>

@@ -140,4 +140,43 @@
             android:layout_marginEnd="@dimen/size_10"
             android:src="@mipmap/forward" />
     </RelativeLayout>
+
+        <RelativeLayout
+        android:id="@+id/pay_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_50"
+        android:layout_below="@+id/charge_rl"
+        android:layout_marginStart="@dimen/size_10"
+        android:layout_marginEnd="@dimen/size_10"
+        android:layout_marginBottom="@dimen/size_10"
+        android:background="@drawable/corners_bg">
+
+        <ImageView
+            android:id="@+id/pay_img"
+            android:layout_width="@dimen/size_30"
+            android:layout_height="@dimen/size_30"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/size_10"
+            android:src="@mipmap/pay_icon" />
+
+        <TextView
+            android:id="@+id/pay_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/size_10"
+            android:layout_toEndOf="@id/pay_img"
+            android:text="@string/pay_money"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_14" />
+
+        <ImageView
+            android:layout_width="@dimen/size_30"
+            android:layout_height="@dimen/size_30"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/size_10"
+            android:src="@mipmap/forward" />
+    </RelativeLayout>
 </RelativeLayout>

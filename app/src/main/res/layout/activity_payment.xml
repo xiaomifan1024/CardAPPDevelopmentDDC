@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    android:orientation="vertical">
+
+    <include android:id="@+id/title_charge" layout="@layout/title_layout"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:text="@string/pay_to"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/card_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_50"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:text="アトレ吉祥寺"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/corners_top_bg"
+        android:layout_marginTop="@dimen/size_30"
+        android:layout_marginStart="@dimen/size_10"
+        android:layout_marginEnd="@dimen/size_10"
+        >
+
+        <TextView
+            android:id="@+id/charge_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_30"
+            android:text="お支払額"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/size_30"
+            android:layout_height="@dimen/size_30"
+            android:layout_below="@id/charge_text"
+            android:layout_marginStart="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_20"
+            android:layout_marginEnd="@dimen/size_10"
+            android:src="@mipmap/japanese_yen" />
+
+        <EditText
+            android:id="@+id/pay_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/charge_text"
+            android:layout_alignStart="@+id/image"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="3dp"
+            android:layout_toEndOf="@+id/image"
+            android:digits="1234567890"
+            android:imeOptions="actionDone"
+            android:textSize="30sp" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/pay_input"
+            android:layout_marginStart="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_10"
+            android:layout_marginEnd="@dimen/size_20"
+            android:background="@color/light_gray" />
+
+        <Button
+            android:id="@+id/payBtn"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/view"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/size_10"
+            android:text="@string/pay_money" />
+
+    </RelativeLayout>
+
+</LinearLayout>

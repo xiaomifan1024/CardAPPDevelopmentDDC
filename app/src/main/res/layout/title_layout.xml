@@ -4,11 +4,14 @@
     android:layout_height="?attr/actionBarSize"
     android:orientation="horizontal">
 
-    <Button
+    <ImageButton
         android:id="@+id/title_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/size_10"
         android:background="@android:color/transparent"
+        android:src="@mipmap/back"
         android:visibility="gone"/>
 
     <TextView

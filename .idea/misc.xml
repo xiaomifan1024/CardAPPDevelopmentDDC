@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lfan7/Practice/app/src/main/res/drawable/button_bg.xml" value="0.16354166666666667" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/drawable/corners_bg.xml" value="0.3478038815117467" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/drawable/corners_bottom_bg.xml" value="0.3478038815117467" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/drawable/corners_top_bg.xml" value="0.3478038815117467" />
@@ -13,8 +14,11 @@
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_charge.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_history_graph.xml" value="0.23097826086956522" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_main.xml" value="0.16195761856710394" />
+        <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_pay_completed.xml" value="0.25" />
+        <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_payment.xml" value="0.33" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_push_test.xml" value="0.33" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/date_choosen_dailog.xml" value="0.2595108695652174" />
+        <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/dialog_loading.xml" value="0.18177083333333333" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/fragment_history.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/fragment_home.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/fragment_notifications.xml" value="0.18072916666666666" />

@@ -18,6 +18,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.example.practice.module.pay.charge.ChargeActivity
 import com.example.practice.R
+import com.example.practice.module.pay.payment.PaymentActivity
 
 
 class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate),View.OnClickListener {
@@ -44,6 +45,7 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
     private fun initView() {
         val imageView: ImageView = viewBinding.refresh
         val chargeRl: RelativeLayout = viewBinding.chargeRl
+        val payRl: RelativeLayout = viewBinding.payRl
         val titleView: TextView = viewBinding.titlePay.title
         //QRCodeを作成
         var isCreated =createQRCode()
@@ -60,6 +62,11 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
         //チャージ画面へ遷移
         chargeRl.setOnClickListener {
             var intent = Intent(this.getActivity(), ChargeActivity().javaClass)
+            startActivity(intent)
+        }
+        //支払う画面へ遷移
+        payRl.setOnClickListener {
+            var intent = Intent(this.getActivity(), PaymentActivity().javaClass)
             startActivity(intent)
         }
         titleView.text=resources.getString(R.string.title_pay)

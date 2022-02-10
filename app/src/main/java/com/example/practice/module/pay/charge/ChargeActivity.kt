@@ -10,8 +10,11 @@ import com.example.practice.R
 import com.example.practice.base.BaseActivity
 import com.example.practice.databinding.ActivityChargeBinding
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.provider.ContactsContract
 
 import android.view.KeyEvent
+import android.view.View
+import android.widget.ImageView
 import android.widget.TextView.OnEditorActionListener
 
 
@@ -24,17 +27,21 @@ class ChargeActivity : BaseActivity<ActivityChargeBinding>(ActivityChargeBinding
 
     private fun initView(){
         val titleView: TextView = viewBinding.titleCharge.title
+        val backIBtn:ImageView = viewBinding.titleCharge.titleBtn
         val inputChargeEdt: EditText = viewBinding.chargeInput
+        backIBtn.visibility = View.VISIBLE
         titleView.text = resources.getString(R.string.recharge)
         titleView.setTextColor(resources.getColor(R.color.black,null))
         inputChargeEdt.setRawInputType(EditorInfo.TYPE_CLASS_NUMBER)
-        inputChargeEdt.setOnEditorActionListener(OnEditorActionListener { textView, actionId, keyEvent ->
-            if ( actionId == EditorInfo.IME_ACTION_DONE) {
-                finish()
-                return@OnEditorActionListener true
-            }
-            false
-        })
+//        inputChargeEdt.setOnEditorActionListener(OnEditorActionListener { _, actionId, _ ->
+//            if ( actionId == EditorInfo.IME_ACTION_DONE) {
+//                return@OnEditorActionListener true
+//            }
+//            false
+//        })
+        backIBtn.setOnClickListener {
+            finish()
+        }
 
     }
 }

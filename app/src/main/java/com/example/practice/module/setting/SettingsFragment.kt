@@ -6,10 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.practice.R
 import com.example.practice.base.BaseFragment
+import com.example.practice.bean.NotificationData
+import com.example.practice.data.SettingsData
 import com.example.practice.databinding.FragmentPayBinding
 import com.example.practice.databinding.FragmentSettingsBinding
 import com.example.practice.module.pay.PayViewModel
@@ -25,14 +29,24 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
     }
     private fun initData() {
         settingViewModel =
-            ViewModelProvider(this).get(SettingsViewModel::class.java)
+            ViewModelProvider(this)[SettingsViewModel::class.java]
+
     }
 
     private fun initView() {
-        val textView: TextView = viewBinding.textSettings
-        settingViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        val settingListView = viewBinding.settingListView
+        val titleView: TextView = viewBinding.titleLl.title
+        var settingsDataList = settingViewModel.getSettingsData()
+        var init: (View, SettingsData) -> Unit = { v: View, d: SettingsData ->
+            var imgView =  v.findViewById<ImageView>(R.id.setting_image_view)
+            var textView = v.findViewById<TextView>(R.id.setting_text_view)
+            imgView.setImageResource(d.imageViewId)
+            textView.text = d.text
+        }
+        var adapter = SettingsListViewAdapter(R.layout.setting_list_item,settingsDataList,init)
+        settingListView.layoutManager = LinearLayoutManager(getActivity())
+        settingListView.adapter = adapter
+        titleView.text = "設定"
     }
 
 

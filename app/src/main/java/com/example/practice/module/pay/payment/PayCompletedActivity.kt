@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import com.example.practice.R
 import com.example.practice.base.BaseActivity
 import com.example.practice.bean.PayResponseBean
 import com.example.practice.databinding.ActivityPayCompletedBinding
@@ -24,16 +25,19 @@ class PayCompletedActivity : BaseActivity<ActivityPayCompletedBinding>(ActivityP
         val hash = viewBinding.hash
 //        val success = viewBinding.success
         val titleBar = viewBinding.titlePay.titleBtn
-
+        val titleText = viewBinding.titlePay.title
         val bundle = this.intent.extras
         val payInfo = bundle?.getSerializable("data") as Result<PayResponseBean>
+
         idFrom.text = payInfo.getOrNull()?.payInfo?.id_from.toString()
         itTo.text = payInfo.getOrNull()?.payInfo?.id_to.toString()
         money.text = payInfo.getOrNull()?.payInfo?.money.toString()+"円"
         time.text = payInfo.getOrNull()?.payInfo?.date+" "+payInfo.getOrNull()?.payInfo?.time
         hash.text = payInfo.getOrNull()?.payInfo?.hash
 //        success.text = payInfo.getOrNull()?.payInfo?.success.toString()
+        titleText.text = "支払い成功"
         titleBar.visibility = View.VISIBLE
+        titleBar.setImageResource(R.mipmap.white_back)
         titleBar.setOnClickListener {
             finish()
         }

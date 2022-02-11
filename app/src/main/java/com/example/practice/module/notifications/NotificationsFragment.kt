@@ -1,5 +1,6 @@
 package com.example.practice.module.notifications
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -12,14 +13,15 @@ import com.example.practice.base.BaseFragment
 import com.example.practice.bean.NotificationData
 import com.example.practice.databinding.FragmentNotificationsBinding
 import com.example.practice.base.list.BaseRecycleViewAdapter.OnRecyclerItemClickListener
-
-
+import com.example.practice.utils.LoadingDialogUtils
 
 
 class NotificationsFragment :  BaseFragment<FragmentNotificationsBinding>(FragmentNotificationsBinding::inflate) {
 
     private lateinit var notificationsViewModel: NotificationsViewModel
     private var isExpend = false
+    private var mLoadingDialog: Dialog? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initData()
@@ -34,6 +36,8 @@ class NotificationsFragment :  BaseFragment<FragmentNotificationsBinding>(Fragme
     private fun initView() {
         val notificationsListView: RecyclerView = viewBinding.nListView
         val titleView: TextView = viewBinding.titleLl.title
+        var loadingDialog = LoadingDialogUtils()
+
         titleView.text = getString(R.string.title_notifications)
         notificationsViewModel.notificationsListLiveData.observe(viewLifecycleOwner, Observer {
             var init: (View, NotificationData) -> Unit = { v:View, d:NotificationData ->
@@ -62,6 +66,14 @@ class NotificationsFragment :  BaseFragment<FragmentNotificationsBinding>(Fragme
             })
             notificationsListView.layoutManager= LinearLayoutManager(getActivity())
             notificationsListView.adapter=adapter
+        })
+
+        notificationsViewModel.loadingLiveData.observe(viewLifecycleOwner,{
+            if(it){
+                mLoadingDialog = loadingDialog.createLoadingDialog(getActivity(),"Loading")
+            } else {
+                loadingDialog.closeDialog(mLoadingDialog)
+            }
         })
     }
 }

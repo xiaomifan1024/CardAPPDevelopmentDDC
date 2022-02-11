@@ -28,6 +28,14 @@
             android:lines="2"
             android:textSize="16sp"
             android:textColor="#666666" />
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/size_10"
+            android:layout_marginTop="@dimen/size_10"
+            android:layout_marginEnd="@dimen/size_10"
+            android:background="@color/light_gray" />
 
 
 </LinearLayout>

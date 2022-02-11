@@ -8,5 +8,4 @@ import com.example.practice.bean.NotificationData
 class NotificationsListViewAdapter(layoutResourceId: Int, items: List<NotificationData>, init: (View, NotificationData) -> Unit) :
     BaseRecycleViewAdapter<NotificationData>(layoutResourceId, items, init){
 
-
 }

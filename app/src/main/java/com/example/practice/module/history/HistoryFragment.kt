@@ -1,6 +1,7 @@
 package com.example.practice.module.history
 
 import android.app.DatePickerDialog
+import android.app.Dialog
 import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -17,6 +18,7 @@ import com.example.practice.bean.Data
 import com.example.practice.bean.HistoryBean
 import com.example.practice.databinding.FragmentHistoryBinding
 import com.example.practice.module.history.graph.HistoryGraphActivity
+import com.example.practice.utils.LoadingDialogUtils
 import java.util.ArrayList
 
 class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBinding::inflate) {
@@ -24,6 +26,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
     private lateinit var historyViewModel: HistoryViewModel
     private var startDate = "2021年12月1日"
     private var endDate = "2021年12月31日"
+    private var mLoadingDialog: Dialog? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,9 +45,10 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
         val graphView: ImageView = viewBinding.titleGraph.titleHistoryShowGraph
         val endTv: TextView = viewBinding.titleGraph.dateEnd
         val startTv: TextView = viewBinding.titleGraph.dateStart
+        var loadingDialog = LoadingDialogUtils()
+
         startTv.text = startDate
         endTv.text = endDate
-        val historyDataList: ArrayList<HistoryBean> = ArrayList<HistoryBean>()
         graphView.setImageResource(R.mipmap.pie_chart)
         historyViewModel.historyListLiveData.observe(viewLifecycleOwner, Observer {
             var init: (View, Data) -> Unit = {v:View,d:Data ->
@@ -64,6 +68,13 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
             historyListView.layoutManager= LinearLayoutManager(getActivity())
             historyListView.adapter=adapter
 
+        })
+        historyViewModel.loadingLiveData.observe(viewLifecycleOwner,{
+            if(it){
+                mLoadingDialog = loadingDialog.createLoadingDialog(getActivity(),"Loading")
+            } else {
+                loadingDialog.closeDialog(mLoadingDialog)
+            }
         })
         //グラフ画面へ遷移
         graphView.setOnClickListener{

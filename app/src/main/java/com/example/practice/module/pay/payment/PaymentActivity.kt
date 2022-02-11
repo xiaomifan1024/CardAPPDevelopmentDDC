@@ -15,6 +15,7 @@ import com.example.practice.databinding.ActivityPaymentBinding
 import android.widget.TextView.OnEditorActionListener
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
+import com.example.practice.R
 import com.example.practice.bean.PayRequestBean
 import com.example.practice.module.pay.PayViewModel
 import com.example.practice.utils.LoadingDialogUtils
@@ -38,11 +39,14 @@ class PaymentActivity : BaseActivity<ActivityPaymentBinding>(ActivityPaymentBind
     }
 
     private fun initView() {
-        val backIBtn: ImageView = viewBinding.titleCharge.titleBtn
+        val backIBtn: ImageView = viewBinding.titlePay.titleBtn
+        val titleText: TextView = viewBinding.titlePay.title
         val inputEdt: EditText = viewBinding.payInput
         val payBtn: Button = viewBinding.payBtn
         var loadingDialog = LoadingDialogUtils()
         backIBtn.visibility = View.VISIBLE
+        backIBtn.setImageResource(R.mipmap.white_back)
+        titleText.text = "お支払い"
         backIBtn.setOnClickListener {
             finish()
         }

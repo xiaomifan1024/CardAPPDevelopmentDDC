@@ -30,8 +30,8 @@ class ChargeActivity : BaseActivity<ActivityChargeBinding>(ActivityChargeBinding
         val backIBtn:ImageView = viewBinding.titleCharge.titleBtn
         val inputChargeEdt: EditText = viewBinding.chargeInput
         backIBtn.visibility = View.VISIBLE
+        backIBtn.setImageResource(R.mipmap.white_back)
         titleView.text = resources.getString(R.string.recharge)
-        titleView.setTextColor(resources.getColor(R.color.black,null))
         inputChargeEdt.setRawInputType(EditorInfo.TYPE_CLASS_NUMBER)
 //        inputChargeEdt.setOnEditorActionListener(OnEditorActionListener { _, actionId, _ ->
 //            if ( actionId == EditorInfo.IME_ACTION_DONE) {

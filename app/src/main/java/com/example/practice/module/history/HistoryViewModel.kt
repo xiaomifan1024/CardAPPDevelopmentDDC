@@ -11,12 +11,15 @@ import kotlinx.coroutines.launch
 
 class HistoryViewModel : ViewModel() {
     val historyListLiveData = MutableLiveData<Result<HistoryBean>>()
+    val loadingLiveData = MutableLiveData<Boolean>()
 
     fun getHistoryList(startDate:String,endDate:String) {
+        loadingLiveData.postValue(true)
         viewModelScope.launch {
             // read data from networkapi
             val resultFromNetwork = NetworkApi.requestHistoryInfo(startDate,endDate)
             historyListLiveData.value=resultFromNetwork
+            loadingLiveData.postValue(false)
         }
     }
 }

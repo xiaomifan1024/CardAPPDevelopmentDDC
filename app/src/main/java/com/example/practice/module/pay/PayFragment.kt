@@ -1,5 +1,6 @@
 package com.example.practice.module.pay
 
+import android.R.attr
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -19,6 +20,23 @@ import android.widget.TextView
 import com.example.practice.module.pay.charge.ChargeActivity
 import com.example.practice.R
 import com.example.practice.module.pay.payment.PaymentActivity
+import com.example.practice.module.MainActivity
+
+import com.google.zxing.integration.android.IntentIntegrator
+import com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE
+import android.R.attr.data
+import android.app.Activity
+import android.util.Log
+import android.view.LayoutInflater
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
+
+import com.google.zxing.integration.android.IntentResult
+
+
+
 
 
 class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate),View.OnClickListener {
@@ -27,6 +45,7 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
     private lateinit var filePath:String //QRCodeキャッシュパス
     private val TOTAL_TIME = 300000L //5分カウントダウン
     private val ONECE_TIME = 1000L //1秒おきに
+    private var activityResultLauncher: ActivityResultLauncher<*>? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,6 +66,7 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
         val chargeRl: RelativeLayout = viewBinding.chargeRl
         val payRl: RelativeLayout = viewBinding.payRl
         val titleView: TextView = viewBinding.titlePay.title
+        val scanRl: RelativeLayout = viewBinding.scanRl
         //QRCodeを作成
         var isCreated =createQRCode()
         payViewModel.text.observe(viewLifecycleOwner, {
@@ -71,7 +91,14 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
         }
         titleView.text=resources.getString(R.string.title_pay)
         titleView.setTextColor(resources.getColor(R.color.white,null))
-
+        //スキャニングQRCode
+        scanRl.setOnClickListener {
+            val intentIntegrator = IntentIntegrator(getActivity())
+            intentIntegrator.setPrompt("QRコードはファインダーボックス内でスキャンしてください")
+            intentIntegrator.initiateScan()
+        }
+        //スキャニング結果
+        getScanResult()
     }
     override fun onClick(p0: View?) {
         when (p0) {
@@ -141,5 +168,32 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
             this.viewBinding.textPay.setImageResource(R.mipmap.failed)
         }
     }
+    /**
+     * QRコードのスキャニング結果を取得
+     */
+    private fun getScanResult(){
+        activityResultLauncher = registerForActivityResult(
+            StartActivityForResult()
+        ) { result: ActivityResult ->
+            val data = result.data
+            when (result.resultCode) {
+                Activity.RESULT_OK -> {
+                    val resultScan = IntentIntegrator.parseActivityResult(result.resultCode, data)
+                    if (result != null) {
+                        if (resultScan.contents == null) {
+                            Toast.makeText(getActivity(), "スキャニング失敗", Toast.LENGTH_LONG).show()
+                        } else {
+                            val bundle = Bundle()
+                            bundle.putString("scan_contents",resultScan.contents)
+                            var intent = Intent(this.getActivity(), ChargeActivity().javaClass)
+                            intent.putExtras(bundle)
+                            startActivity(intent)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 
 }

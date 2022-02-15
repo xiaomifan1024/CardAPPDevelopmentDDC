@@ -5,13 +5,23 @@
     android:layout_height="match_parent"
     android:background="@color/blue"
     tools:context=".module.pay.PayFragment"
-    android:layout_marginBottom="@dimen/size_50"
     >
 
     <include
         android:id="@+id/title_pay"
         layout="@layout/title_layout" />
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/size_50"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+       >
     <LinearLayout
         android:id="@+id/code"
         android:layout_width="match_parent"
@@ -57,7 +67,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/size_20" />
+            android:layout_marginBottom="@dimen/size_20"
+            android:layout_marginStart="@dimen/size_10"/>
 
         <View
             android:layout_width="match_parent"
@@ -221,4 +232,6 @@
             android:layout_marginEnd="@dimen/size_10"
             android:src="@mipmap/forward" />
     </RelativeLayout>
+    </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

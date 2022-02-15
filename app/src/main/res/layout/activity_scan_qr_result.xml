@@ -8,9 +8,10 @@
         android:id="@+id/title"
         layout="@layout/title_layout"/>
     <TextView
+        android:id="@+id/scan_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/size_50"
-        android:text="xxxxxxxxxxxxxxxxxxxxx"/>
+        />
 </LinearLayout>

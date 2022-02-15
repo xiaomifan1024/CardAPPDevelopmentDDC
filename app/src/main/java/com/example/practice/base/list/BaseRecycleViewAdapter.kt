@@ -7,11 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.practice.base.list.BaseRecycleViewAdapter.OnRecyclerItemClickListener
 
 
-
-
-
-
-
 abstract class BaseRecycleViewAdapter<T>(val layoutResourceId: Int, val items: List<T>, val init: (View, T) -> Unit) :
     RecyclerView.Adapter<BaseRecycleViewAdapter.BaseViewHolder<T>>() {
     private var monItemClickListener: OnRecyclerItemClickListener? = null

@@ -31,6 +31,7 @@ import android.view.LayoutInflater
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 
 import com.google.zxing.integration.android.IntentResult
@@ -45,7 +46,7 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
     private lateinit var filePath:String //QRCodeキャッシュパス
     private val TOTAL_TIME = 300000L //5分カウントダウン
     private val ONECE_TIME = 1000L //1秒おきに
-    private var activityResultLauncher: ActivityResultLauncher<*>? = null
+    private var activityResultLauncher: ActivityResultLauncher<Intent>? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -91,14 +92,37 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
         }
         titleView.text=resources.getString(R.string.title_pay)
         titleView.setTextColor(resources.getColor(R.color.white,null))
+        //スキャニングQRCodeのregisterForActivityResult callback
+        activityResultLauncher = registerForActivityResult(
+            StartActivityForResult()
+        ) { result: ActivityResult ->
+            val data = result.data
+            when (result.resultCode) {
+                Activity.RESULT_OK -> {
+                    val resultScan = IntentIntegrator.parseActivityResult(result.resultCode, data)
+                    if (result != null) {
+                        if (resultScan.contents == null) {
+                            Toast.makeText(getActivity(), "スキャニング失敗", Toast.LENGTH_LONG).show()
+                        } else {
+                            val bundle = Bundle()
+                            bundle.putString("scan_contents",resultScan.contents)
+                            var intent = Intent(this.getActivity(), ScanQrResultActivity()::class.java)
+                            intent.putExtras(bundle)
+                            startActivity(intent)
+                        }
+                    }
+                }
+            }
+        }
         //スキャニングQRCode
         scanRl.setOnClickListener {
             val intentIntegrator = IntentIntegrator(getActivity())
             intentIntegrator.setPrompt("QRコードはファインダーボックス内でスキャンしてください")
-            intentIntegrator.initiateScan()
+            activityResultLauncher!!.launch(intentIntegrator.createScanIntent())
+
         }
         //スキャニング結果
-        getScanResult()
+//        getScanResult()
     }
     override fun onClick(p0: View?) {
         when (p0) {
@@ -172,10 +196,12 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
      * QRコードのスキャニング結果を取得
      */
     private fun getScanResult(){
+        val bundle = Bundle()
         activityResultLauncher = registerForActivityResult(
             StartActivityForResult()
         ) { result: ActivityResult ->
             val data = result.data
+
             when (result.resultCode) {
                 Activity.RESULT_OK -> {
                     val resultScan = IntentIntegrator.parseActivityResult(result.resultCode, data)
@@ -183,17 +209,24 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
                         if (resultScan.contents == null) {
                             Toast.makeText(getActivity(), "スキャニング失敗", Toast.LENGTH_LONG).show()
                         } else {
-                            val bundle = Bundle()
-                            bundle.putString("scan_contents",resultScan.contents)
-                            var intent = Intent(this.getActivity(), ChargeActivity().javaClass)
+                            var intent = Intent(this.getActivity(), ScanQrResultActivity()::class.java)
                             intent.putExtras(bundle)
-                            startActivity(intent)
+                            bundle.putString("scan_contents",resultScan.contents)
+                            (activityResultLauncher as ActivityResultLauncher<Intent>).launch(intent)
                         }
                     }
                 }
             }
         }
+
+
+//        startActivity(intent)
+
+
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        getScanResult()
+    }
 
 }

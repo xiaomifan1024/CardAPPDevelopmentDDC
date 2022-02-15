@@ -93,27 +93,7 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
         titleView.text=resources.getString(R.string.title_pay)
         titleView.setTextColor(resources.getColor(R.color.white,null))
         //スキャニングQRCodeのregisterForActivityResult callback
-        activityResultLauncher = registerForActivityResult(
-            StartActivityForResult()
-        ) { result: ActivityResult ->
-            val data = result.data
-            when (result.resultCode) {
-                Activity.RESULT_OK -> {
-                    val resultScan = IntentIntegrator.parseActivityResult(result.resultCode, data)
-                    if (result != null) {
-                        if (resultScan.contents == null) {
-                            Toast.makeText(getActivity(), "スキャニング失敗", Toast.LENGTH_LONG).show()
-                        } else {
-                            val bundle = Bundle()
-                            bundle.putString("scan_contents",resultScan.contents)
-                            var intent = Intent(this.getActivity(), ScanQrResultActivity()::class.java)
-                            intent.putExtras(bundle)
-                            startActivity(intent)
-                        }
-                    }
-                }
-            }
-        }
+        getScanResult()
         //スキャニングQRCode
         scanRl.setOnClickListener {
             val intentIntegrator = IntentIntegrator(getActivity())
@@ -196,12 +176,10 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
      * QRコードのスキャニング結果を取得
      */
     private fun getScanResult(){
-        val bundle = Bundle()
-        activityResultLauncher = registerForActivityResult(
-            StartActivityForResult()
-        ) { result: ActivityResult ->
+         activityResultLauncher = registerForActivityResult(
+                StartActivityForResult()
+                ) { result: ActivityResult ->
             val data = result.data
-
             when (result.resultCode) {
                 Activity.RESULT_OK -> {
                     val resultScan = IntentIntegrator.parseActivityResult(result.resultCode, data)
@@ -209,24 +187,18 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
                         if (resultScan.contents == null) {
                             Toast.makeText(getActivity(), "スキャニング失敗", Toast.LENGTH_LONG).show()
                         } else {
-                            var intent = Intent(this.getActivity(), ScanQrResultActivity()::class.java)
-                            intent.putExtras(bundle)
+                            val bundle =Bundle()
                             bundle.putString("scan_contents",resultScan.contents)
-                            (activityResultLauncher as ActivityResultLauncher<Intent>).launch(intent)
+                            var intent = Intent(
+                                this.getActivity(), ScanQrResultActivity()::class.java
+                            )
+                            intent.putExtras(bundle)
+                            startActivity(intent)
                         }
                     }
                 }
             }
         }
-
-
-//        startActivity(intent)
-
-
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        getScanResult()
     }
 
 }

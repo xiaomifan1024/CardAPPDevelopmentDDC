@@ -1,5 +1,6 @@
 package com.example.practice.network
 
+import com.example.practice.bean.CardLoginRequestBean
 import com.example.practice.bean.PayRequestBean
 import com.example.practice.network.base.BaseNetworkApi
 
@@ -15,5 +16,9 @@ class NetworkApiTest(url:String) : BaseNetworkApi<INetworkService>(url){
     //お支払うAPIをコール
     suspend fun requestPaymentInfo(request: PayRequestBean) = getResult {
         service.requestPaymentInfo(request)
+    }
+    //カード番号登録APIをコール
+    suspend fun requestCardNumLogin(request: CardLoginRequestBean) = getResult {
+        service.requestCardNumLogin(request)
     }
 }

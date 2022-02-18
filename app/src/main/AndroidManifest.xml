@@ -21,6 +21,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Practice">
         <activity
+            android:name=".module.setting.cardlogin.CardLoginConfirmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".module.setting.cardlogin.CardLoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".module.pay.ScanQrResultActivity"
             android:exported="false" />
         <activity

@@ -101,8 +101,7 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
             activityResultLauncher!!.launch(intentIntegrator.createScanIntent())
 
         }
-        //スキャニング結果
-//        getScanResult()
+
     }
     override fun onClick(p0: View?) {
         when (p0) {

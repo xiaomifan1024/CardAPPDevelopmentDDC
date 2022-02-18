@@ -25,4 +25,7 @@ interface INetworkService {
 
     @POST("dev/pay")
     suspend fun requestPaymentInfo(@Body request:PayRequestBean): BaseResponse<PayResponseBean>
+
+    @POST("dev/card_num_login")
+    suspend fun requestCardNumLogin(@Body request:CardLoginRequestBean): BaseResponse<CardLoginResponseBean>
 }

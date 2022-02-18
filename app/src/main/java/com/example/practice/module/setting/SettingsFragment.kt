@@ -1,5 +1,6 @@
 package com.example.practice.module.setting
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,11 +13,13 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.practice.R
 import com.example.practice.base.BaseFragment
+import com.example.practice.base.list.BaseRecycleViewAdapter
 import com.example.practice.bean.NotificationData
 import com.example.practice.data.SettingsData
 import com.example.practice.databinding.FragmentPayBinding
 import com.example.practice.databinding.FragmentSettingsBinding
 import com.example.practice.module.pay.PayViewModel
+import com.example.practice.module.setting.cardlogin.CardLoginActivity
 
 class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
 
@@ -47,6 +50,16 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
         settingListView.layoutManager = LinearLayoutManager(getActivity())
         settingListView.adapter = adapter
         titleView.text = "設定"
+        adapter.setRecyclerItemClickListener(object :
+            BaseRecycleViewAdapter.OnRecyclerItemClickListener {
+                override fun onRecyclerItemClick(view:View,Position: Int) {
+                    if(Position == 0) {
+                        //カード登録画面へ遷移
+                        val intent = Intent(getActivity(),CardLoginActivity().javaClass)
+                        startActivity(intent)
+                    }
+                }
+            })
     }
 
 

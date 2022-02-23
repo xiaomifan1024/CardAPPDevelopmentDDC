@@ -6,17 +6,20 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.room.Room
 import com.example.practice.R
 import com.example.practice.base.BaseActivity
 import com.example.practice.bean.CardLoginRequestBean
 import com.example.practice.databinding.ActivityCardLoginConfirmBinding
 import com.example.practice.module.pay.payment.PayCompletedActivity
 import com.example.practice.module.setting.SettingsFragment
+import com.example.practice.room.MyDataBase
+import com.example.practice.room.data.CardNumLogin
 import com.example.practice.utils.LoadingDialogUtils
 
 class CardLoginConfirmActivity : BaseActivity<ActivityCardLoginConfirmBinding>(ActivityCardLoginConfirmBinding::inflate) {
 
-    private val cardViewModel: CardLoginViewModel by viewModels()
+    private lateinit var cardViewModel: CardLoginViewModel
     private val requestData = CardLoginRequestBean("1234567890123456","02/22",
         "TARO TANAKA ", 123)
     private var mLoadingDialog: Dialog? = null
@@ -34,6 +37,8 @@ class CardLoginConfirmActivity : BaseActivity<ActivityCardLoginConfirmBinding>(A
         val cardNameTv = viewBinding.cardName
         val securityTv = viewBinding.securityCode
         var loadingDialog = LoadingDialogUtils()
+        val db = Room.databaseBuilder(applicationContext, MyDataBase::class.java,"myCardLogin.db").allowMainThreadQueries().build()
+        cardViewModel = CardLoginViewModel(db)
         //タイトルの戻るボタンを設定
         titleBackBtn.visibility = View.VISIBLE
         titleBackBtn.setImageResource(R.mipmap.white_back)
@@ -45,9 +50,19 @@ class CardLoginConfirmActivity : BaseActivity<ActivityCardLoginConfirmBinding>(A
         dateTv.text = bundle?.getString("date")
         cardNameTv.text = bundle?.getString("card_name")
         securityTv.text = bundle?.getString("security_code")
-
+        var cardData = bundle?.getString("card_num")?.let {
+            CardNumLogin(
+                it,
+                bundle.getString("date")!!,
+                bundle.getString("card_name")!!,
+                bundle.getString("security_code")!!
+            )
+        }
         confirmTv.setOnClickListener {
             cardViewModel.cardNumberLogin(requestData)
+            if (cardData != null) {
+                cardViewModel.insertCardData(cardData)
+            }
         }
 
         cardViewModel.loadingLiveData.observe(this,  {

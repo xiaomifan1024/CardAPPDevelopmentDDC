@@ -1,6 +1,5 @@
 package com.example.practice.module.pay
 
-import android.R.attr
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -20,24 +19,11 @@ import android.widget.TextView
 import com.example.practice.module.pay.charge.ChargeActivity
 import com.example.practice.R
 import com.example.practice.module.pay.payment.PaymentActivity
-import com.example.practice.module.MainActivity
-
 import com.google.zxing.integration.android.IntentIntegrator
-import com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE
-import android.R.attr.data
 import android.app.Activity
-import android.util.Log
-import android.view.LayoutInflater
 import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
-
-import com.google.zxing.integration.android.IntentResult
-
-
-
 
 
 class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate),View.OnClickListener {

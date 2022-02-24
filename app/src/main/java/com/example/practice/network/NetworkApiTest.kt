@@ -1,6 +1,8 @@
 package com.example.practice.network
 
 import com.example.practice.bean.CardLoginRequestBean
+import com.example.practice.bean.CurrentLimitRequestBean
+import com.example.practice.bean.CurrentLimitResponseBean
 import com.example.practice.bean.PayRequestBean
 import com.example.practice.network.base.BaseNetworkApi
 
@@ -20,5 +22,13 @@ class NetworkApiTest(url:String) : BaseNetworkApi<INetworkService>(url){
     //カード番号登録APIをコール
     suspend fun requestCardNumLogin(request: CardLoginRequestBean) = getResult {
         service.requestCardNumLogin(request)
+    }
+    //限度額APIをコール
+    suspend fun requestGetCurrentLimit() = getResult {
+        service.requestGetCurrentLimit()
+    }
+    //限度額変更API
+    suspend fun requestCurrentLimit(request: CurrentLimitRequestBean) = getResult {
+        service.requestCurrentLimit(request)
     }
 }

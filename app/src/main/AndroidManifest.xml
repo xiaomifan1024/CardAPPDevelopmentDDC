@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Practice">
         <activity
+            android:name=".module.setting.chargechage.ChargeChangeActivity"
+            android:exported="false" />
+        <activity
             android:name=".module.setting.cardlogin.CardLoginConfirmActivity"
             android:exported="false" />
         <activity

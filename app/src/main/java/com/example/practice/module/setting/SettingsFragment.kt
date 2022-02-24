@@ -20,6 +20,7 @@ import com.example.practice.databinding.FragmentPayBinding
 import com.example.practice.databinding.FragmentSettingsBinding
 import com.example.practice.module.pay.PayViewModel
 import com.example.practice.module.setting.cardlogin.CardLoginActivity
+import com.example.practice.module.setting.chargechage.ChargeChangeActivity
 
 class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
 
@@ -56,6 +57,11 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
                     if(Position == 0) {
                         //カード登録画面へ遷移
                         val intent = Intent(getActivity(),CardLoginActivity().javaClass)
+                        startActivity(intent)
+                    }
+                    if(Position == 1) {
+                        //チャージ限度額変更へ遷移
+                        val intent = Intent(getActivity(), ChargeChangeActivity().javaClass)
                         startActivity(intent)
                     }
                 }

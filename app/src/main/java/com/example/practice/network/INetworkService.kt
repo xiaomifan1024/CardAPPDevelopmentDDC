@@ -28,4 +28,11 @@ interface INetworkService {
 
     @POST("dev/card_num_login")
     suspend fun requestCardNumLogin(@Body request:CardLoginRequestBean): BaseResponse<CardLoginResponseBean>
+
+    @GET("dev/get_currentLimit")
+    suspend fun requestGetCurrentLimit(): BaseResponse<CurrentLimitResponseBean>
+
+    @POST("dev/send_currentlimit_change")
+    suspend fun requestCurrentLimit(@Body request:CurrentLimitRequestBean): BaseResponse<ChangeLimitResponseBean>
+
 }

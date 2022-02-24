@@ -15,7 +15,7 @@ class PayViewModel : ViewModel() {
     val text: LiveData<String> = _text
     val leftMoneyLiveData = MutableLiveData<Result<LeftMoneyBean>>()
 
-    fun getLeftMoneyData(){
+    fun getLeftMoneyData() {
         val leftMoneyData= NetworkApiTest("https://a4f77a93-cbb2-42c8-b457-8045938e6064.mock.pstmn.io")
         viewModelScope.launch {
             val requestValue=leftMoneyData.requestLeftMoney()

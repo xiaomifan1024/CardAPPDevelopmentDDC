@@ -39,7 +39,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         sendRegistrationToServer(token)
     }
     private fun sendRegistrationToServer(token: String?) {
-        // TODO: Implement this method to send a token to your app server.
     }
     private fun sendNotification(messageBody: String) {
         val intent = Intent(this, PushTestActivity::class.java)

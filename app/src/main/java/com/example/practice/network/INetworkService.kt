@@ -35,4 +35,7 @@ interface INetworkService {
     @POST("dev/send_currentlimit_change")
     suspend fun requestCurrentLimit(@Body request:CurrentLimitRequestBean): BaseResponse<ChangeLimitResponseBean>
 
+    @GET("dev/get_custmerInfo")
+    suspend fun requestGetCustomerInfo(): BaseResponse<CustomerInfoResponse>
+
 }

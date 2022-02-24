@@ -31,4 +31,8 @@ class NetworkApiTest(url:String) : BaseNetworkApi<INetworkService>(url){
     suspend fun requestCurrentLimit(request: CurrentLimitRequestBean) = getResult {
         service.requestCurrentLimit(request)
     }
+    //情報取得API
+    suspend fun requestGetCustomerInfo() = getResult {
+        service.requestGetCustomerInfo()
+    }
 }

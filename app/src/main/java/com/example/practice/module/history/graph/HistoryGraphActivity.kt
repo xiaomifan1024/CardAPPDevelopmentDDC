@@ -10,15 +10,16 @@ import com.example.practice.bean.HistoryBean
 import com.example.practice.databinding.ActivityHistoryGraphBinding
 import com.example.practice.utils.CirqueStatisticalView
 import android.content.Intent
-
-
-
+import android.widget.TextView
 
 
 class HistoryGraphActivity : BaseActivity<ActivityHistoryGraphBinding>(ActivityHistoryGraphBinding::inflate) {
     private val circleData = mutableListOf<CircleDataBean>()
     private var arrayList = mutableListOf<Data>()
     private var data:Data ?= null
+    private var startDate = "2021年12月1日"
+    private var endDate = "2021年12月31日"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        initData()
@@ -28,13 +29,16 @@ class HistoryGraphActivity : BaseActivity<ActivityHistoryGraphBinding>(ActivityH
 
     private fun initView(){
         val graphTitleImg: ImageView = viewBinding.graphImg.titleHistoryShowGraph
-
+        val endTv: TextView = viewBinding.graphImg.dateEnd
+        val startTv: TextView = viewBinding.graphImg.dateStart
         graphTitleImg.setImageResource(R.mipmap.list)
         graphTitleImg.setOnClickListener {
             finish()
         }
         val graphView : CirqueStatisticalView = viewBinding.graphView
         graphView.setItems(circleData)
+        startTv.text = startDate
+        endTv.text = endDate
     }
 
 

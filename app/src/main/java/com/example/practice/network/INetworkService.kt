@@ -38,4 +38,7 @@ interface INetworkService {
     @GET("dev/get_custmerInfo")
     suspend fun requestGetCustomerInfo(): BaseResponse<CustomerInfoResponse>
 
+    @POST("devdev/send_custmerInfo")
+    suspend fun requestUserInfoChange(@Body request:UserInfoRequest): BaseResponse<UserInfoResponseBean>
+
 }

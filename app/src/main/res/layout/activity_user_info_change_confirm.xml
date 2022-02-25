@@ -40,8 +40,9 @@
         >
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             >
+
             <TextView
                 android:id="@+id/nameTv"
                 android:layout_width="wrap_content"
@@ -52,72 +53,45 @@
                 android:textSize="18dp" />
 
             <TextView
-                android:id="@+id/firstNameTv"
+                android:id="@+id/firstName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/nameTv"
-                android:layout_marginStart="@dimen/size_10"
-                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginStart="@dimen/size_20"
+                android:layout_marginTop="@dimen/size_10"
                 android:layout_marginBottom="@dimen/size_20"
-                android:text="姓"
-                android:textColor="@color/gray"
-                android:textSize="23dp" />
-
-            <EditText
-                android:id="@+id/firstName"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@id/firstNameTv"
-                android:layout_marginStart="@dimen/size_10"
-                android:layout_toRightOf="@id/firstNameTv"
-                android:background="@drawable/edit_background"
-                android:padding="5dp"
+                android:textColor="@color/black"
                 android:textSize="23dp" />
 
             <TextView
-                android:id="@+id/lastNameTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/size_10"
-                android:layout_marginTop="@dimen/size_20"
-                android:layout_toRightOf="@id/firstName"
-                android:layout_alignBaseline="@id/firstNameTv"
-                android:text="名"
-                android:textColor="@color/gray"
-                android:textSize="23dp" />
-
-            <EditText
                 android:id="@+id/lastName"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/firstName"
                 android:layout_marginStart="@dimen/size_10"
-                android:layout_marginTop="@dimen/size_10"
-                android:layout_toRightOf="@id/lastNameTv"
-                android:background="@drawable/edit_background"
-                android:layout_alignBaseline="@id/firstNameTv"
-                android:padding="5sp"
+                android:layout_toRightOf="@id/firstName"
+                android:padding="5dp"
+                android:textColor="@color/black"
                 android:textSize="23dp" />
 
             <TextView
                 android:id="@+id/birthDayTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/firstName"
+                android:layout_below="@id/lastName"
                 android:layout_marginStart="@dimen/size_10"
                 android:layout_marginTop="@dimen/size_20"
                 android:text="生年月日"
                 android:textSize="18dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/year"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/birthDayTv"
                 android:layout_alignBaseline="@id/yearTv"
-                android:layout_marginStart="@dimen/size_10"
-                android:background="@drawable/edit_background"
-                android:drawableRight="@mipmap/drop_down"
-                android:padding="5dp"
+                android:layout_marginStart="@dimen/size_20"
+                android:textColor="@color/black"
                 android:textSize="23dp" />
 
             <TextView
@@ -125,55 +99,55 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/birthDayTv"
-                android:layout_marginStart="@dimen/size_10"
-                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="@dimen/size_10"
                 android:layout_toRightOf="@id/year"
                 android:text="年"
-                android:textColor="@color/gray"
+                android:textColor="@color/black"
                 android:textSize="23dp" />
-            <EditText
+
+            <TextView
                 android:id="@+id/month"
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/yearTv"
-                android:layout_marginStart="@dimen/size_10"
-                android:background="@drawable/edit_background"
                 android:layout_alignBaseline="@id/yearTv"
-                android:drawableRight="@mipmap/drop_down"
-                android:padding="5dp"
+                android:layout_marginStart="6dp"
+                android:layout_toRightOf="@id/yearTv"
+                android:textColor="@color/black"
                 android:textSize="23dp" />
+
             <TextView
                 android:id="@+id/monthTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/size_10"
-                android:layout_marginTop="@dimen/size_20"
                 android:layout_below="@id/birthDayTv"
+                android:layout_marginStart="3dp"
+                android:layout_alignBaseline="@id/yearTv"
                 android:layout_toRightOf="@id/month"
                 android:text="月"
-                android:textColor="@color/gray"
+                android:textColor="@color/black"
                 android:textSize="23dp" />
-            <EditText
+
+            <TextView
                 android:id="@+id/day"
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/monthTv"
-                android:layout_marginStart="@dimen/size_10"
-                android:background="@drawable/edit_background"
                 android:layout_alignBaseline="@id/yearTv"
-                android:drawableRight="@mipmap/drop_down"
-                android:padding="5dp"
+                android:layout_marginStart="6dp"
+                android:layout_toRightOf="@id/monthTv"
+                android:textColor="@color/black"
                 android:textSize="23dp" />
+
             <TextView
                 android:id="@+id/dayTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/size_10"
-                android:layout_marginTop="@dimen/size_20"
                 android:layout_below="@id/birthDayTv"
+                android:layout_alignBaseline="@id/yearTv"
+                android:layout_marginStart="3dp"
                 android:layout_toRightOf="@id/day"
                 android:text="日"
-                android:textColor="@color/gray"
+                android:textColor="@color/black"
                 android:textSize="23dp" />
             <TextView
                 android:id="@+id/sexTv"
@@ -185,16 +159,15 @@
                 android:text="性別"
                 android:textSize="18dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/sex"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/sexTv"
-                android:layout_marginStart="@dimen/size_10"
+                android:layout_marginStart="@dimen/size_20"
                 android:layout_marginTop="@dimen/size_10"
-                android:background="@drawable/edit_background"
-                android:drawableRight="@mipmap/drop_down"
-                android:padding="5dp"
+                android:text="男性"
+                android:textColor="@color/black"
                 android:textSize="23dp" />
 
             <TextView
@@ -207,49 +180,38 @@
                 android:text="郵便番号"
                 android:textSize="18dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/postNum"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/postNumTv"
                 android:layout_alignStart="@id/postNumTv"
+                android:layout_marginStart="@dimen/size_20"
                 android:layout_marginTop="@dimen/size_10"
-                android:background="@drawable/edit_background"
-                android:padding="5dp"
+                android:textColor="@color/black"
                 android:textSize="23dp" />
             <TextView
                 android:id="@+id/line"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/birthDayTv"
-                android:layout_marginStart="@dimen/size_10"
                 android:layout_marginTop="@dimen/size_20"
                 android:layout_toRightOf="@id/postNum"
                 android:layout_alignBaseline="@id/postNum"
                 android:text="―"
-                android:textColor="@color/gray"
+                android:textColor="@color/black"
                 android:textSize="23dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/postNum1"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/postNumTv"
-                android:layout_marginStart="@dimen/size_10"
-                android:layout_marginTop="@dimen/size_10"
-                android:layout_toRightOf="@id/line"
-                android:background="@drawable/edit_background"
-                android:padding="5dp"
-                android:textSize="23dp" />
-
-            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/postNumTv"
-                android:layout_alignTop="@id/postNum"
-                android:layout_marginStart="@dimen/size_10"
-                android:layout_toRightOf="@id/postNum1"
-                android:text="検索" />
+                android:layout_marginTop="@dimen/size_10"
+                android:layout_toRightOf="@id/line"
+                android:textColor="@color/black"
+                android:textSize="23dp" />
+
             <TextView
                 android:id="@+id/addressTv"
                 android:layout_width="wrap_content"
@@ -260,16 +222,16 @@
                 android:text="住所"
                 android:textSize="18dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/addressTv"
-                android:layout_marginStart="@dimen/size_10"
+                android:layout_marginStart="@dimen/size_20"
                 android:layout_marginTop="@dimen/size_10"
                 android:layout_marginEnd="@dimen/size_10"
-                android:background="@drawable/edit_background"
-                android:padding="5dp"
+                android:text="東京都新宿区大久保1-1"
+                android:textColor="@color/black"
                 android:textSize="23dp" />
             <TextView
                 android:id="@+id/mailTv"
@@ -280,16 +242,16 @@
                 android:layout_marginTop="@dimen/size_20"
                 android:text="メールアドレス"
                 android:textSize="18dp" />
-            <EditText
+
+            <TextView
                 android:id="@+id/mail"
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/mailTv"
-                android:layout_marginStart="@dimen/size_10"
-                android:layout_marginEnd="@dimen/size_10"
+                android:layout_marginStart="@dimen/size_20"
                 android:layout_marginTop="@dimen/size_10"
-                android:background="@drawable/edit_background"
-                android:padding="5dp"
+                android:layout_marginEnd="@dimen/size_10"
+                android:textColor="@color/black"
                 android:textSize="23dp" />
 
             <TextView
@@ -302,52 +264,27 @@
                 android:text="パスワード"
                 android:textSize="18dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/password"
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/passwordTv"
-                android:layout_marginStart="@dimen/size_10"
+                android:layout_marginStart="@dimen/size_20"
+                android:textColor="@color/black"
                 android:layout_marginTop="@dimen/size_10"
                 android:layout_marginEnd="@dimen/size_10"
-                android:background="@drawable/edit_background"
                 android:inputType="numberPassword"
-                android:padding="5dp"
-                android:textSize="23dp" />
-
-            <TextView
-                android:id="@+id/password1Tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/password"
-                android:layout_marginStart="@dimen/size_10"
-                android:layout_marginTop="@dimen/size_20"
-                android:text="パスワード（確認）"
-                android:textSize="18dp" />
-
-            <EditText
-                android:id="@+id/password1"
-                android:layout_width="260dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/password1Tv"
-                android:layout_marginStart="@dimen/size_10"
-                android:layout_marginTop="@dimen/size_10"
-                android:layout_marginEnd="@dimen/size_10"
-                android:background="@drawable/edit_background"
-                android:inputType="numberPassword"
-                android:padding="5dp"
                 android:textSize="23dp" />
 
             <Button
                 android:id="@+id/confirm_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/password1"
                 android:layout_centerHorizontal="true"
+                android:layout_below="@id/password"
                 android:layout_marginTop="@dimen/size_10"
-                android:layout_marginEnd="@dimen/size_20"
-                android:layout_marginBottom="@dimen/size_10"
-                android:text="確認" />
+                android:layout_marginBottom="@dimen/size_20"
+                android:text="変更" />
         </RelativeLayout>
     </ScrollView>
 </LinearLayout>

@@ -2,7 +2,9 @@ package com.example.practice.module.setting.userinfo
 
 import android.app.Dialog
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import com.example.practice.R
 import com.example.practice.base.BaseActivity
 import com.example.practice.databinding.ActivityUserInfoChangeBinding
 import com.example.practice.utils.LoadingDialogUtils
@@ -34,7 +36,16 @@ class UserInfoChangeActivity : BaseActivity<ActivityUserInfoChangeBinding>(Activ
         val email = viewBinding.mail
         val password = viewBinding.password
         val password1 = viewBinding.password1
+        val titleBack = viewBinding.titleUserInfo.titleBtn
         var loadingDialog = LoadingDialogUtils()
+
+        //タイトルの戻るボタンを設定
+        titleBack.visibility = View.VISIBLE
+        titleBack.setImageResource(R.mipmap.white_back)
+        titleBack.setOnClickListener {
+            finish()
+        }
+
         userInfoViewModel.userInfoLiveData.observe(this,{
             firstName.setText(it.getOrNull()?.customerData?.etName1)
             lastName.setText(it.getOrNull()?.customerData?.etName2)

@@ -18,7 +18,7 @@ class SettingsViewModel : ViewModel() {
         var data = SettingsData(R.mipmap.credit_card,"クレジットカード登録")
         var data1 = SettingsData(R.mipmap.setting_charge,"チャージ限度額変更")
         var data2 = SettingsData(R.mipmap.user_account,"アカウント情報変更")
-        var data3 = SettingsData(R.mipmap.clothes,"アプリ着せ替え")
+        var data3 = SettingsData(R.mipmap.message,"お知らせ配信")
         var data4 = SettingsData(R.mipmap.del_user,"アカウント削除")
         arrayList.add(data)
         arrayList.add(data1)

@@ -21,6 +21,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Practice">
         <activity
+            android:name=".module.setting.notification.NotificationEditConfirmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".module.setting.notification.NotificationEditMessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".module.setting.notification.NotificationModifyActivity"
+            android:exported="false" />
+        <activity
             android:name=".module.setting.userinfo.UserInfoChangeConfirmActivity"
             android:exported="false" />
         <activity

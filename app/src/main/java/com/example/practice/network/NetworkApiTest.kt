@@ -36,4 +36,12 @@ class NetworkApiTest(url:String) : BaseNetworkApi<INetworkService>(url){
     suspend fun requestUserInfoChange(request: UserInfoRequest) = getResult {
         service.requestUserInfoChange(request)
     }
+    //お知らせ取得API
+    suspend fun requestGetMessageData()= getResult {
+        service.requestGetMessageData()
+    }
+    //お知らせ登録API
+    suspend fun requestMessageEditData(request: NotificationEditRequestBean)= getResult {
+        service.requestMessageEditData(request)
+    }
 }

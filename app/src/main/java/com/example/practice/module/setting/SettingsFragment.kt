@@ -21,6 +21,7 @@ import com.example.practice.databinding.FragmentSettingsBinding
 import com.example.practice.module.pay.PayViewModel
 import com.example.practice.module.setting.cardlogin.CardLoginActivity
 import com.example.practice.module.setting.chargechage.ChargeChangeActivity
+import com.example.practice.module.setting.notification.NotificationModifyActivity
 import com.example.practice.module.setting.userinfo.UserInfoChangeActivity
 
 class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
@@ -68,6 +69,11 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
                     if(Position == 2) {
                         //チャージ限度額変更へ遷移
                         val intent = Intent(getActivity(), UserInfoChangeActivity().javaClass)
+                        startActivity(intent)
+                    }
+                    if(Position == 3) {
+                        //お知らせ配信へ遷移
+                        val intent = Intent(getActivity(), NotificationModifyActivity().javaClass)
                         startActivity(intent)
                     }
                 }

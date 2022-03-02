@@ -21,6 +21,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Practice">
         <activity
+            android:name=".module.setting.accountdelete.AccountDelDoneActivity"
+            android:exported="false" />
+        <activity
+            android:name=".module.setting.accountdelete.AccountDelConfirmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".module.setting.accountdelete.AccountDeleteActivity"
+            android:exported="false" />
+        <activity
             android:name=".module.setting.notification.NotificationEditConfirmActivity"
             android:exported="false" />
         <activity

@@ -14,6 +14,10 @@
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2953703703703704" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2953703703703704" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/drawable/text_background.xml" value="0.203125" />
+        <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_account_del_confim.xml" value="0.196875" />
+        <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_account_del_confirm.xml" value="0.16195761856710394" />
+        <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_account_del_done.xml" value="0.2658514492753623" />
+        <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_account_delete.xml" value="0.2658514492753623" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_card_login.xml" value="0.33489583333333334" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_card_login_confirm.xml" value="0.33489583333333334" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_charge.xml" value="0.25833333333333336" />
@@ -27,6 +31,7 @@
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_payment.xml" value="0.33" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_push_test.xml" value="0.33" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_scan_qr_result.xml" value="0.3070652173913043" />
+        <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_user_delete.xml" value="0.196875" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_user_info_change.xml" value="0.32563405797101447" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_user_info_change_confirm.xml" value="0.196875" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/date_choosen_dailog.xml" value="0.2595108695652174" />

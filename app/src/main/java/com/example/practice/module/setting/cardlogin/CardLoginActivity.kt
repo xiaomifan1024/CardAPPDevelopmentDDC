@@ -12,6 +12,7 @@ import com.example.practice.room.MyDataBase
 
 class CardLoginActivity : BaseActivity<ActivityCardLoginBinding>(ActivityCardLoginBinding::inflate)  {
     private lateinit var cardViewModel: CardLoginViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()

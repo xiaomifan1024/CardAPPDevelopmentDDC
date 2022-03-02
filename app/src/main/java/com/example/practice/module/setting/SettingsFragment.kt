@@ -19,6 +19,7 @@ import com.example.practice.data.SettingsData
 import com.example.practice.databinding.FragmentPayBinding
 import com.example.practice.databinding.FragmentSettingsBinding
 import com.example.practice.module.pay.PayViewModel
+import com.example.practice.module.setting.accountdelete.AccountDeleteActivity
 import com.example.practice.module.setting.cardlogin.CardLoginActivity
 import com.example.practice.module.setting.chargechage.ChargeChangeActivity
 import com.example.practice.module.setting.notification.NotificationModifyActivity
@@ -74,6 +75,11 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
                     if(Position == 3) {
                         //お知らせ配信へ遷移
                         val intent = Intent(getActivity(), NotificationModifyActivity().javaClass)
+                        startActivity(intent)
+                    }
+                    if(Position == 4) {
+                        //アカウント削除へ遷移
+                        val intent = Intent(getActivity(), AccountDeleteActivity().javaClass)
                         startActivity(intent)
                     }
                 }

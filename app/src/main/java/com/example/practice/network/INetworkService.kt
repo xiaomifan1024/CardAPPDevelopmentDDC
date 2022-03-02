@@ -47,4 +47,7 @@ interface INetworkService {
     @POST("dev/message_login")
     suspend fun requestMessageEditData(@Body request:NotificationEditRequestBean): BaseResponse<NotificationEditResponseBean>
 
+    @POST("dev/account_del")
+    suspend fun requestAccountDataDel(@Body request:AccountDelRequestBean): BaseResponse<AccountDelResponseBean>
+
 }

@@ -44,4 +44,8 @@ class NetworkApiTest(url:String) : BaseNetworkApi<INetworkService>(url){
     suspend fun requestMessageEditData(request: NotificationEditRequestBean)= getResult {
         service.requestMessageEditData(request)
     }
+    //退会API
+    suspend fun requestAccountDataDel(request: AccountDelRequestBean)= getResult {
+        service.requestAccountDataDel(request)
+    }
 }

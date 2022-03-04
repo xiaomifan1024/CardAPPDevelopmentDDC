@@ -82,6 +82,7 @@
             android:textSize="30sp" />
 
         <View
+            android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@id/charge_input"
@@ -89,6 +90,17 @@
             android:layout_marginTop="@dimen/size_10"
             android:layout_marginEnd="@dimen/size_20"
             android:background="@color/light_gray" />
+
+        <Button
+            android:id="@+id/payBtn"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/line"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/size_30"
+            android:text="チャージ"
+            android:textColor="@color/white" />
+
 
     </RelativeLayout>
 

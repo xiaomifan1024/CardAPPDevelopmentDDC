@@ -48,4 +48,9 @@ class NetworkApiTest(url:String) : BaseNetworkApi<INetworkService>(url){
     suspend fun requestAccountDataDel(request: AccountDelRequestBean)= getResult {
         service.requestAccountDataDel(request)
     }
+
+    //チャージAPI
+    suspend fun requestChargeData(request: ChargeDataRequestBean)= getResult {
+        service.requestChargeData(request)
+    }
 }

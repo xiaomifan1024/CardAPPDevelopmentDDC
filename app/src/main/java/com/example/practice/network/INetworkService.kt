@@ -50,4 +50,7 @@ interface INetworkService {
     @POST("dev/account_del")
     suspend fun requestAccountDataDel(@Body request:AccountDelRequestBean): BaseResponse<AccountDelResponseBean>
 
+    @POST("dev/charge")
+    suspend fun requestChargeData(@Body request:ChargeDataRequestBean): BaseResponse<ChargeDataResponseBean>
+
 }

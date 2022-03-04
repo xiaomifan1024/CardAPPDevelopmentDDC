@@ -88,6 +88,8 @@
             android:layout_below="@+id/view"
             android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/size_10"
+            android:textColor="@color/white"
+            android:theme="@style/NormalButton"
             android:text="@string/pay_money" />
 
     </RelativeLayout>

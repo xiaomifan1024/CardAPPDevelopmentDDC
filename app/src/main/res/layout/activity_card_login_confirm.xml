@@ -108,6 +108,8 @@
                 android:layout_marginTop="@dimen/size_40"
                 android:layout_marginEnd="@dimen/size_20"
                 android:layout_marginBottom="@dimen/size_10"
+                android:textColor="@color/white"
+                android:theme="@style/NormalButton"
                 android:text="登録"/>
         </LinearLayout>
 </LinearLayout>

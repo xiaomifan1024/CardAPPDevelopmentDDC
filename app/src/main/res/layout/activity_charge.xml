@@ -99,7 +99,9 @@
             android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/size_30"
             android:text="チャージ"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:theme="@style/NormalButton"
+            />
 
 
     </RelativeLayout>

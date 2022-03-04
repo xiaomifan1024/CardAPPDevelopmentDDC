@@ -71,6 +71,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/size_40"
                 android:layout_marginBottom="@dimen/size_10"
+                android:textColor="@color/white"
+                android:theme="@style/NormalButton"
                 android:text="確認画面へ"/>
         </LinearLayout>
     </ScrollView>

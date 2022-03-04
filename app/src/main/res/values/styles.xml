@@ -17,6 +17,11 @@
         <item name="colorButtonNormal">@color/red</item>
     </style>
 
+    <style name="NormalButton" parent="Theme.Design.Light.NoActionBar">
+        <item name="buttonStyle">@style/Widget.AppCompat.Button</item>
+        <item name="colorButtonNormal">@color/blue</item>
+    </style>
+
     <!-- my loading dialog -->
     <style name="MyDialogStyle">
         <item name="android:windowBackground">@android:color/transparent</item>

@@ -1,6 +1,7 @@
 package com.example.practice.module.setting.notification
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.SpannableString
@@ -14,6 +15,7 @@ import com.example.practice.R
 import com.example.practice.base.BaseActivity
 import com.example.practice.bean.NotificationEditRequestBean
 import com.example.practice.databinding.ActivityNotificationEditConfirmBinding
+import com.example.practice.module.MainActivity
 import com.example.practice.utils.LoadingDialogUtils
 
 class NotificationEditConfirmActivity : BaseActivity<ActivityNotificationEditConfirmBinding>(
@@ -65,6 +67,8 @@ class NotificationEditConfirmActivity : BaseActivity<ActivityNotificationEditCon
                 mLoadingDialog = loadingDialog.createLoadingDialog(this,"Loading")
             } else {
                 loadingDialog.closeDialog(mLoadingDialog)
+                val intent = Intent(this, MainActivity().javaClass)
+                startActivity(intent)
                 Toast.makeText(this, messageViewModel.editLiveData.value?.getOrNull()?.messageData?.msg, Toast.LENGTH_LONG).show()
             }
         })

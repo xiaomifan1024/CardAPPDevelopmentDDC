@@ -11,11 +11,13 @@ import com.example.practice.R
 import com.example.practice.base.BaseActivity
 import com.example.practice.bean.CardLoginRequestBean
 import com.example.practice.databinding.ActivityCardLoginConfirmBinding
+import com.example.practice.module.MainActivity
 import com.example.practice.module.pay.payment.PayCompletedActivity
 import com.example.practice.module.setting.SettingsFragment
 import com.example.practice.room.MyDataBase
 import com.example.practice.room.data.CardNumLogin
 import com.example.practice.utils.LoadingDialogUtils
+import kotlinx.coroutines.MainScope
 
 class CardLoginConfirmActivity : BaseActivity<ActivityCardLoginConfirmBinding>(ActivityCardLoginConfirmBinding::inflate) {
 
@@ -70,6 +72,8 @@ class CardLoginConfirmActivity : BaseActivity<ActivityCardLoginConfirmBinding>(A
                 mLoadingDialog = loadingDialog.createLoadingDialog(this,"Loading")
             } else {
                 loadingDialog.closeDialog(mLoadingDialog)
+                val intent = Intent(this, MainActivity().javaClass)
+                startActivity(intent)
                 Toast.makeText(this, "カード番号を登録しました！", Toast.LENGTH_LONG).show()
             }
         })

@@ -2,6 +2,7 @@ package com.example.practice.module.setting.userinfo
 
 
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -10,6 +11,7 @@ import com.example.practice.R
 import com.example.practice.base.BaseActivity
 import com.example.practice.bean.UserInfoRequest
 import com.example.practice.databinding.ActivityUserInfoChangeConfirmBinding
+import com.example.practice.module.MainActivity
 import com.example.practice.utils.LoadingDialogUtils
 
 
@@ -66,6 +68,8 @@ class UserInfoChangeConfirmActivity : BaseActivity<ActivityUserInfoChangeConfirm
             } else {
                 userInfoViewModel.userChangeLiveData.observe(this,{
                     Toast.makeText(this, it.getOrNull()?.userInfoData?.msg, Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, MainActivity().javaClass)
+                    startActivity(intent)
                 })
                 loadingDialog.closeDialog(mLoadingDialog)
             }

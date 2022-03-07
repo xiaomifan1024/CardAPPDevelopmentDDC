@@ -1,9 +1,7 @@
 package com.example.practice.module.history
 
-import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Intent
-import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -15,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.practice.R
 import com.example.practice.base.BaseFragment
 import com.example.practice.bean.Data
-import com.example.practice.bean.HistoryBean
 import com.example.practice.databinding.FragmentHistoryBinding
 import com.example.practice.module.history.graph.HistoryGraphActivity
+import com.example.practice.utils.DatePickerView
 import com.example.practice.utils.LoadingDialogUtils
 import java.util.ArrayList
 
@@ -46,6 +44,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
         val endTv: TextView = viewBinding.titleGraph.dateEnd
         val startTv: TextView = viewBinding.titleGraph.dateStart
         var loadingDialog = LoadingDialogUtils()
+        var dataPicker = context?.let { DatePickerView(it) }
 
         startTv.text = startDate
         endTv.text = endDate
@@ -103,33 +102,11 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
         }
         //startDateを選択
         startTv.setOnClickListener {
-            showDatePickerDialog(startTv)
+            dataPicker?.showDatePickerDialog(startTv)
         }
         //endDateを選択
         endTv.setOnClickListener {
-            showDatePickerDialog(endTv)
+            dataPicker?.showDatePickerDialog(endTv)
         }
-    }
-
-    private fun showDatePickerDialog(tv:TextView) {
-        val ca = Calendar.getInstance()
-        var mYear = ca[Calendar.YEAR]
-        var mMonth = ca[Calendar.MONTH]
-        var mDay = ca[Calendar.DAY_OF_MONTH]
-
-        val datePickerDialog = context?.let {
-            DatePickerDialog(
-                it,
-                 { _, year, month, dayOfMonth ->
-                    mYear = year
-                    mMonth = month
-                    mDay = dayOfMonth
-                     val mDate = "${year}年${month + 1}月${dayOfMonth}日"
-                     tv.text = mDate
-                },
-                mYear, mMonth, mDay
-            )
-        }
-        datePickerDialog?.show()
     }
 }

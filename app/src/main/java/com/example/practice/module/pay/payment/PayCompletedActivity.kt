@@ -1,5 +1,6 @@
 package com.example.practice.module.pay.payment
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,7 @@ import com.example.practice.base.BaseActivity
 import com.example.practice.bean.PayResponseBean
 import com.example.practice.databinding.ActivityPayCompletedBinding
 import com.example.practice.databinding.ActivityPaymentBinding
+import com.example.practice.module.MainActivity
 
 class PayCompletedActivity : BaseActivity<ActivityPayCompletedBinding>(ActivityPayCompletedBinding::inflate) {
 
@@ -39,6 +41,11 @@ class PayCompletedActivity : BaseActivity<ActivityPayCompletedBinding>(ActivityP
         titleBar.visibility = View.VISIBLE
         titleBar.setImageResource(R.mipmap.white_back)
         titleBar.setOnClickListener {
+            val intent = Intent(this, MainActivity().javaClass)
+            val bundle1 = Bundle()
+            bundle1.putString("pay",payInfo.getOrNull()?.payInfo?.money.toString())
+            intent.putExtras(bundle1)
+            startActivity(intent)
             finish()
         }
     }

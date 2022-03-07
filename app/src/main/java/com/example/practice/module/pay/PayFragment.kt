@@ -21,6 +21,7 @@ import com.example.practice.R
 import com.example.practice.module.pay.payment.PaymentActivity
 import com.google.zxing.integration.android.IntentIntegrator
 import android.app.Activity
+import android.content.Intent.getIntent
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
@@ -54,6 +55,9 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
         val payRl: RelativeLayout = viewBinding.payRl
         val titleView: TextView = viewBinding.titlePay.title
         val scanRl: RelativeLayout = viewBinding.scanRl
+        val bundle = getActivity()?.intent?.extras
+        val chargeMoney = bundle?.getString("charge")
+        val payMoney = bundle?.getString("pay")
         //QRCodeを作成
         var isCreated =createQRCode()
         payViewModel.text.observe(viewLifecycleOwner, {
@@ -62,7 +66,7 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
         })
         payViewModel.leftMoneyLiveData.observe(viewLifecycleOwner, {
             //残高を取得
-            viewBinding.moneyLeft.text=it.getOrNull()?.leftData?.money
+            viewBinding.moneyLeft.text=it.getOrNull()?.leftData?.money.toString()+"円"
         })
         imageView.setOnClickListener(this)
         countDownTimer.start()

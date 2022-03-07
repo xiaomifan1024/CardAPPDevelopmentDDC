@@ -6,11 +6,10 @@ import com.example.practice.R
 import com.example.practice.base.BaseActivity
 import com.example.practice.bean.CircleDataBean
 import com.example.practice.bean.Data
-import com.example.practice.bean.HistoryBean
 import com.example.practice.databinding.ActivityHistoryGraphBinding
 import com.example.practice.utils.CirqueStatisticalView
-import android.content.Intent
 import android.widget.TextView
+import com.example.practice.utils.DatePickerView
 
 
 class HistoryGraphActivity : BaseActivity<ActivityHistoryGraphBinding>(ActivityHistoryGraphBinding::inflate) {
@@ -31,6 +30,7 @@ class HistoryGraphActivity : BaseActivity<ActivityHistoryGraphBinding>(ActivityH
         val graphTitleImg: ImageView = viewBinding.graphImg.titleHistoryShowGraph
         val endTv: TextView = viewBinding.graphImg.dateEnd
         val startTv: TextView = viewBinding.graphImg.dateStart
+        var dataPicker = DatePickerView(this)
         graphTitleImg.setImageResource(R.mipmap.list)
         graphTitleImg.setOnClickListener {
             finish()
@@ -39,6 +39,14 @@ class HistoryGraphActivity : BaseActivity<ActivityHistoryGraphBinding>(ActivityH
         graphView.setItems(circleData)
         startTv.text = startDate
         endTv.text = endDate
+        //startDateを選択
+        startTv.setOnClickListener {
+            dataPicker.showDatePickerDialog(startTv)
+        }
+        //endDateを選択
+        endTv.setOnClickListener {
+            dataPicker.showDatePickerDialog(endTv)
+        }
     }
 
 

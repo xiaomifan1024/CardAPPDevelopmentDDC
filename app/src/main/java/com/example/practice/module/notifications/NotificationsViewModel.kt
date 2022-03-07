@@ -13,13 +13,26 @@ import kotlinx.coroutines.launch
 class NotificationsViewModel : ViewModel() {
     val notificationsListLiveData = MutableLiveData<Result<NotificationBean>>()
     val loadingLiveData = MutableLiveData<Boolean>()
+    val pullToRefreshLiveData = MutableLiveData<Boolean>()
 
     fun getNotificationsList() {
+        loadingLiveData.postValue(true)
+            viewModelScope.launch {
+            val notificationsData= NetworkApiTest("https://bcc44455-3c2c-4c72-b417-470a1c5e2842.mock.pstmn.io")
+            val requestValue=notificationsData.requestNotificationInfo()
+            notificationsListLiveData.value=requestValue
+            loadingLiveData.postValue(false)
+        }
+    }
+
+    fun getPTRNotificationsList() {
+        pullToRefreshLiveData.postValue(true)
         loadingLiveData.postValue(true)
         viewModelScope.launch {
             val notificationsData= NetworkApiTest("https://bcc44455-3c2c-4c72-b417-470a1c5e2842.mock.pstmn.io")
             val requestValue=notificationsData.requestNotificationInfo()
             notificationsListLiveData.value=requestValue
+            pullToRefreshLiveData.postValue(false)
             loadingLiveData.postValue(false)
         }
     }

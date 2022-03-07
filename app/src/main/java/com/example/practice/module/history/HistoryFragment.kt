@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.practice.R
 import com.example.practice.base.BaseFragment
 import com.example.practice.bean.Data
@@ -45,7 +46,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
         val startTv: TextView = viewBinding.titleGraph.dateStart
         var loadingDialog = LoadingDialogUtils()
         var dataPicker = context?.let { DatePickerView(it) }
-
+        val swipeRefreshLayout: SwipeRefreshLayout = viewBinding.refresh
         startTv.text = startDate
         endTv.text = endDate
         graphView.setImageResource(R.mipmap.pie_chart)
@@ -108,5 +109,12 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
         endTv.setOnClickListener {
             dataPicker?.showDatePickerDialog(endTv)
         }
+        //PullToRefresh
+        swipeRefreshLayout.setOnRefreshListener {
+            historyViewModel.reGetHistoryList(startDate,endDate)
+        }
+        historyViewModel.pullToRefreshLiveData.observe(viewLifecycleOwner,{
+            swipeRefreshLayout.isRefreshing = it
+        })
     }
 }

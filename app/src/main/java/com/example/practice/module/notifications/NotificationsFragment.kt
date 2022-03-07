@@ -4,10 +4,12 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getColor
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.practice.R
 import com.example.practice.base.BaseFragment
 import com.example.practice.bean.NotificationData
@@ -37,6 +39,7 @@ class NotificationsFragment :  BaseFragment<FragmentNotificationsBinding>(Fragme
         val notificationsListView: RecyclerView = viewBinding.nListView
         val titleView: TextView = viewBinding.titleLl.title
         var loadingDialog = LoadingDialogUtils()
+        val swipeRefreshLayout: SwipeRefreshLayout= viewBinding.refresh
 
         titleView.text = getString(R.string.title_notifications)
         notificationsViewModel.notificationsListLiveData.observe(viewLifecycleOwner, Observer {
@@ -74,6 +77,12 @@ class NotificationsFragment :  BaseFragment<FragmentNotificationsBinding>(Fragme
             } else {
                 loadingDialog.closeDialog(mLoadingDialog)
             }
+        })
+        swipeRefreshLayout.setOnRefreshListener {
+            notificationsViewModel.getPTRNotificationsList()
+        }
+        notificationsViewModel.pullToRefreshLiveData.observe(viewLifecycleOwner,{
+            swipeRefreshLayout.isRefreshing = it
         })
     }
 }

@@ -40,6 +40,7 @@ class UserInfoChangeConfirmActivity : BaseActivity<ActivityUserInfoChangeConfirm
         val password = viewBinding.password
         val titleBack = viewBinding.titleUserInfo.titleBtn
         val changeBtn = viewBinding.confirmButton
+        val sexTv = viewBinding.sex
         var loadingDialog = LoadingDialogUtils()
         //タイトルの戻るボタンを設定
         titleBack.visibility = View.VISIBLE
@@ -57,7 +58,7 @@ class UserInfoChangeConfirmActivity : BaseActivity<ActivityUserInfoChangeConfirm
         zipcode1.text = bundle?.getString("zipCode1")
         email.text = bundle?.getString("email")
         password.text = bundle?.getString("password")
-
+        sexTv.text = bundle?.getString("gender")
         changeBtn.setOnClickListener {
             val requestBean = UserInfoRequest(firstName.text.toString(),lastName.text.toString(),"1990/01/01","1111234",email.text.toString(),password.text.toString())
             userInfoViewModel.requestUserInfoChange(requestBean)

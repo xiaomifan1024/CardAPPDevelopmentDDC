@@ -17,6 +17,7 @@
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2953703703703704" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2953703703703704" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2953703703703704" />
+        <entry key="..\:/Users/lfan7/Practice/app/src/main/res/drawable/spinner_style.xml" value="0.21354166666666666" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/drawable/text_background.xml" value="0.203125" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_account_del_confim.xml" value="0.196875" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/activity_account_del_confirm.xml" value="0.16195761856710394" />
@@ -48,6 +49,8 @@
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/fragment_settings.xml" value="0.23097826086956522" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/history_header_layout.xml" value="0.2006340579710145" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/history_list_item.xml" value="0.25" />
+        <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/item_dropdown.xml" value="0.196875" />
+        <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/item_select.xml" value="0.196875" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/notification_item.xml" value="0.21354166666666666" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/setting_list_item.xml" value="0.3129528985507246" />
         <entry key="..\:/Users/lfan7/Practice/app/src/main/res/layout/title_layout.xml" value="0.2826086956521739" />

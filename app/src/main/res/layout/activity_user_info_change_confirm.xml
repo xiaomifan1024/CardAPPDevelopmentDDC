@@ -166,7 +166,6 @@
                 android:layout_below="@id/sexTv"
                 android:layout_marginStart="@dimen/size_20"
                 android:layout_marginTop="@dimen/size_10"
-                android:text="男性"
                 android:textColor="@color/black"
                 android:textSize="23dp" />
 

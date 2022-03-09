@@ -1,19 +1,29 @@
 package com.example.practice.module.setting.userinfo
 
+import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Intent
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProvider
 import com.example.practice.R
 import com.example.practice.base.BaseActivity
 import com.example.practice.databinding.ActivityUserInfoChangeBinding
 import com.example.practice.utils.LoadingDialogUtils
+import android.view.ViewGroup
+
+
+
 
 
 class UserInfoChangeActivity : BaseActivity<ActivityUserInfoChangeBinding>(ActivityUserInfoChangeBinding::inflate)   {
     private lateinit var userInfoViewModel: UserInfoChangeViewModel
     private var mLoadingDialog: Dialog? = null
+    private var isSpinnerFirst: Boolean = true
+    private var selectedView: View? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +49,7 @@ class UserInfoChangeActivity : BaseActivity<ActivityUserInfoChangeBinding>(Activ
         val password1 = viewBinding.password1
         val titleBack = viewBinding.titleUserInfo.titleBtn
         val confirmBtn = viewBinding.confirmButton
-        val sexEdt = viewBinding.sex
+        val sexSpinner = viewBinding.sex
         val address = viewBinding.address
         var loadingDialog = LoadingDialogUtils()
 
@@ -85,10 +95,54 @@ class UserInfoChangeActivity : BaseActivity<ActivityUserInfoChangeBinding>(Activ
             bundle.putString("email",email.text.toString())
             bundle.putString("password",password.text.toString())
             bundle.putString("passwordCheck",password1.text.toString())
+            bundle.putString("gender",sexSpinner.selectedItem.toString())
             val intent = Intent(this,UserInfoChangeConfirmActivity().javaClass)
             intent.putExtras(bundle)
             startActivity(intent)
         }
+        val sexArr = resources.getStringArray(R.array.sex)
+        sexSpinner.onItemSelectedListener =  object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                userInfoViewModel.isSpinnerShow.observe(this@UserInfoChangeActivity,{ it ->
+                    if(it) {
+                        view?.visibility = View.INVISIBLE
+                    } else {
+                        view?.visibility = View.VISIBLE
+                        if(isSpinnerFirst) {
+                            userInfoViewModel.userInfoLiveData.observe(this@UserInfoChangeActivity, {
+                                if(it.getOrNull()?.customerData?.eGender.equals("男性")) {
+                                    sexSpinner.setSelection(0)
+                                } else {
+                                    sexSpinner.setSelection(1)
+                                }
+                            })
+                        }
+                    }
+                })
+                isSpinnerFirst = false
+            }
+        }
+
+        val adapter = ArrayAdapter(this, R.layout.item_select, sexArr)
+        adapter.setDropDownViewResource(R.layout.item_dropdown)
+        sexSpinner.adapter = adapter
+
+//        birthDayYear.setOnClickListener {
+//            val calendar = Calendar.getInstance()
+//            val datePickYear = DatePickerDialog(this,android.R.style.Theme_DeviceDefault_Dialog_Alert)
+//            val datePicker = datePickYear.datePicker
+//            datePickYear.show()
+//            ((datePicker.getChildAt(0) as ViewGroup).getChildAt(0) as ViewGroup).getChildAt(1).visibility =
+//                View.GONE
+//
+//            ((datePicker.getChildAt(0) as ViewGroup).getChildAt(0) as ViewGroup).getChildAt(2).visibility =
+//                View.GONE
+//
+//        }
 
     }
 }

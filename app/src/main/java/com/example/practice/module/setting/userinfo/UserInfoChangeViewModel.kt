@@ -14,14 +14,17 @@ class UserInfoChangeViewModel: ViewModel() {
     val userInfoLiveData = MutableLiveData<Result<CustomerInfoResponse>>()
     val userChangeLiveData = MutableLiveData<Result<UserInfoResponseBean>>()
     val loadingLiveData = MutableLiveData<Boolean>()
+    var isSpinnerShow = MutableLiveData<Boolean>()
 
     fun getUserInfoData() {
         loadingLiveData.postValue(true)
+        isSpinnerShow.postValue(true)
         val userInfoData = NetworkApiTest("https://87937c60-43bb-49e4-a700-6a09e3759310.mock.pstmn.io")
         viewModelScope.launch {
             val requestData = userInfoData.requestGetCustomerInfo()
             userInfoLiveData.value = requestData
             loadingLiveData.postValue(false)
+            isSpinnerShow.postValue(false)
         }
 
     }

@@ -117,6 +117,7 @@
                 android:layout_marginStart="@dimen/size_10"
                 android:background="@drawable/edit_background"
                 android:drawableRight="@mipmap/drop_down"
+                android:inputType="date"
                 android:padding="5dp"
                 android:textSize="23dp" />
 
@@ -131,15 +132,17 @@
                 android:text="年"
                 android:textColor="@color/gray"
                 android:textSize="23dp" />
+
             <EditText
                 android:id="@+id/month"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/yearTv"
-                android:layout_marginStart="@dimen/size_10"
-                android:background="@drawable/edit_background"
                 android:layout_alignBaseline="@id/yearTv"
+                android:layout_marginStart="@dimen/size_10"
+                android:layout_toRightOf="@id/yearTv"
+                android:background="@drawable/edit_background"
                 android:drawableRight="@mipmap/drop_down"
+                android:inputType="date"
                 android:padding="5dp"
                 android:textSize="23dp" />
             <TextView
@@ -162,6 +165,7 @@
                 android:background="@drawable/edit_background"
                 android:layout_alignBaseline="@id/yearTv"
                 android:drawableRight="@mipmap/drop_down"
+                android:inputType="date"
                 android:padding="5dp"
                 android:textSize="23dp" />
             <TextView
@@ -185,17 +189,19 @@
                 android:text="性別"
                 android:textSize="18dp" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/sex"
-                android:layout_width="70dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/sexTv"
                 android:layout_marginStart="@dimen/size_10"
                 android:layout_marginTop="@dimen/size_10"
-                android:background="@drawable/edit_background"
-                android:drawableRight="@mipmap/drop_down"
-                android:padding="5dp"
-                android:textSize="23dp" />
+                android:background="@drawable/spinner_style"
+                android:dropDownWidth="100dp"
+                android:dropDownVerticalOffset="45dp"
+                android:entries="@array/sex"
+                android:spinnerMode="dropdown" />
+
 
             <TextView
                 android:id="@+id/postNumTv"

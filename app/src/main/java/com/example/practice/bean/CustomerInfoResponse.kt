@@ -6,6 +6,7 @@ data class CustomerInfoResponse(
 data class CustomerData(
     val eZipCode: String,
     val etBirthday: String,
+    val eGender: String,
     val etEmail: String,
     val etName1: String,
     val etName2: String,

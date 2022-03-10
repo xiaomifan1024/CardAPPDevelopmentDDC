@@ -14,6 +14,9 @@ import com.example.practice.base.BaseActivity
 import com.example.practice.databinding.ActivityUserInfoChangeBinding
 import com.example.practice.utils.LoadingDialogUtils
 import android.view.ViewGroup
+import com.example.practice.constant.DateSelectType
+import com.example.practice.utils.DatePickerView
+import com.google.android.material.datepicker.MaterialDatePicker.Builder.datePicker
 
 
 
@@ -52,7 +55,7 @@ class UserInfoChangeActivity : BaseActivity<ActivityUserInfoChangeBinding>(Activ
         val sexSpinner = viewBinding.sex
         val address = viewBinding.address
         var loadingDialog = LoadingDialogUtils()
-
+        var dataPicker = DatePickerView(this)
         //タイトルの戻るボタンを設定
         titleBack.visibility = View.VISIBLE
         titleBack.setImageResource(R.mipmap.white_back)
@@ -130,19 +133,15 @@ class UserInfoChangeActivity : BaseActivity<ActivityUserInfoChangeBinding>(Activ
         val adapter = ArrayAdapter(this, R.layout.item_select, sexArr)
         adapter.setDropDownViewResource(R.layout.item_dropdown)
         sexSpinner.adapter = adapter
-
-//        birthDayYear.setOnClickListener {
-//            val calendar = Calendar.getInstance()
-//            val datePickYear = DatePickerDialog(this,android.R.style.Theme_DeviceDefault_Dialog_Alert)
-//            val datePicker = datePickYear.datePicker
-//            datePickYear.show()
-//            ((datePicker.getChildAt(0) as ViewGroup).getChildAt(0) as ViewGroup).getChildAt(1).visibility =
-//                View.GONE
-//
-//            ((datePicker.getChildAt(0) as ViewGroup).getChildAt(0) as ViewGroup).getChildAt(2).visibility =
-//                View.GONE
-//
-//        }
+        birthDayYear.setOnClickListener {
+            dataPicker.showSingleDatePickerDialog(birthDayYear, DateSelectType.YEAR)
+        }
+        birthDayMonth.setOnClickListener {
+            dataPicker.showSingleDatePickerDialog(birthDayMonth, DateSelectType.MONTH)
+        }
+        birthDayDay.setOnClickListener {
+            dataPicker.showSingleDatePickerDialog(birthDayDay, DateSelectType.DAY)
+        }
 
     }
 }

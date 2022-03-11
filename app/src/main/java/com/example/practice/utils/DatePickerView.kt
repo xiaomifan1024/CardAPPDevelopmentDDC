@@ -36,7 +36,7 @@ class DatePickerView(context: Context) {
     }
 
     @SuppressLint("ResourceType")
-    fun showSingleDatePickerDialog(et:EditText, type:Int) {
+    fun showSingleDatePickerDialog(et:TextView, type:Int) {
         val ca = Calendar.getInstance()
         var mYear = ca[Calendar.YEAR]
         var mMonth = ca[Calendar.MONTH]

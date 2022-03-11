@@ -46,19 +46,21 @@ class NotificationModifyActivity : BaseActivity<ActivityNotificationModifyBindin
         titleBackBtn.setOnClickListener {
             finish()
         }
-        messageViewModel.loadingLiveData.observe(this,{
+        messageViewModel.loadingLiveData.observe(this,{ it ->
             if(it){
                 mLoadingDialog = loadingDialog.createLoadingDialog(this,"Loading")
             } else {
                 loadingDialog.closeDialog(mLoadingDialog)
             }
             messageViewModel.messageLiveData.observe(this,{
-                val messageText = SpannableString(it.getOrNull()?.messageData?.message_title+"\n"+it.getOrNull()?.messageData?.message_body)
-                messageText.setSpan(AbsoluteSizeSpan(23,true),0,it.getOrNull()?.messageData?.message_title!!.length,
+               it.onSuccess {
+                val messageText = SpannableString(it.messageData.message_title+"\n"+it.messageData?.message_body)
+                messageText.setSpan(AbsoluteSizeSpan(23,true),0,it.messageData?.message_title!!.length,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-                messageText.setSpan(StyleSpan(Typeface.BOLD),0,it.getOrNull()?.messageData?.message_title!!.length,
+                messageText.setSpan(StyleSpan(Typeface.BOLD),0,it.messageData?.message_title!!.length,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
                 msgEdit.setText(messageText)
+               }
             })
 
             changeBtn.setOnClickListener{

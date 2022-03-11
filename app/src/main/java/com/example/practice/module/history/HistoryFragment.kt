@@ -60,13 +60,20 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
                 priceView.text = d.price
             }
             //get from networkApi
-            var adapter = it.getOrNull()?.let { it1 ->
-                HistoryListViewAdapter(R.layout.history_list_item,
-                    it1.dataList,init)
-            }
+            if(it.getOrNull()!=null) {
+                historyListView.visibility = View.VISIBLE
+                viewBinding.errorMsg.visibility = View.GONE
 
-            historyListView.layoutManager= LinearLayoutManager(getActivity())
-            historyListView.adapter=adapter
+                var adapter = it.getOrNull()?.let { it1 ->
+                    HistoryListViewAdapter(R.layout.history_list_item,
+                        it1.dataList,init)
+                }
+                historyListView.layoutManager= LinearLayoutManager(getActivity())
+                historyListView.adapter=adapter
+            } else {
+                historyListView.visibility = View.GONE
+                viewBinding.errorMsg.visibility = View.VISIBLE
+            }
 
         })
         historyViewModel.loadingLiveData.observe(viewLifecycleOwner,{

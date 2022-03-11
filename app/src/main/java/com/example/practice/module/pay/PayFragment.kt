@@ -66,7 +66,9 @@ class PayFragment : BaseFragment<FragmentPayBinding>(FragmentPayBinding::inflate
         })
         payViewModel.leftMoneyLiveData.observe(viewLifecycleOwner, {
             //残高を取得
-            viewBinding.moneyLeft.text=it.getOrNull()?.leftData?.money.toString()+"円"
+            if(it.getOrNull() != null) {
+                viewBinding.moneyLeft.text = it.getOrNull()?.leftData?.money.toString() + "円"
+            }
         })
         imageView.setOnClickListener(this)
         countDownTimer.start()

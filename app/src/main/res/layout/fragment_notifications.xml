@@ -1,15 +1,15 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".module.notifications.NotificationsFragment"
-    android:orientation="vertical">
+    tools:context=".module.notifications.NotificationsFragment">
     <include
         android:id="@+id/titleLl"
         layout="@layout/title_layout" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/refresh"
+        android:layout_below="@id/titleLl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,7 +17,20 @@
             android:id="@+id/nListView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="60dp" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/errorMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="@dimen/size_20"
+        android:layout_marginEnd="@dimen/size_20"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="お知らせは何もないのですが、\nネットワークをチェックしてください。" />
+
+</RelativeLayout>

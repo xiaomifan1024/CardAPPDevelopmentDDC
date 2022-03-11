@@ -49,26 +49,34 @@ class NotificationsFragment :  BaseFragment<FragmentNotificationsBinding>(Fragme
                 titleTv.text = d.title
                 expandableTv.text = d.msg
             }
-
-            var adapter = it.getOrNull()?.let { it1 ->
-                NotificationsListViewAdapter(R.layout.notification_item,
-                    it1.notificationList,init)
-            }
-            adapter?.setRecyclerItemClickListener(object : OnRecyclerItemClickListener {
-                override fun onRecyclerItemClick(view:View,Position: Int) {
-                    var tv =view.findViewById<TextView>(R.id.expandable_text)
-                    isExpend = if (!isExpend) {
-                        tv.minLines = 0
-                        tv.maxLines = Integer.MAX_VALUE
-                        true
-                    } else {
-                        tv.setLines(2)
-                        false
-                    }
+            if( it.getOrNull()!=null) {
+                notificationsListView.visibility = View.VISIBLE
+                viewBinding.errorMsg.visibility = View.GONE
+                var adapter = it.getOrNull()?.let { it1 ->
+                    NotificationsListViewAdapter(
+                        R.layout.notification_item,
+                        it1.notificationList, init
+                    )
                 }
-            })
-            notificationsListView.layoutManager= LinearLayoutManager(getActivity())
-            notificationsListView.adapter=adapter
+                adapter?.setRecyclerItemClickListener(object : OnRecyclerItemClickListener {
+                    override fun onRecyclerItemClick(view: View, Position: Int) {
+                        var tv = view.findViewById<TextView>(R.id.expandable_text)
+                        isExpend = if (!isExpend) {
+                            tv.minLines = 0
+                            tv.maxLines = Integer.MAX_VALUE
+                            true
+                        } else {
+                            tv.setLines(2)
+                            false
+                        }
+                    }
+                })
+                notificationsListView.layoutManager = LinearLayoutManager(getActivity())
+                notificationsListView.adapter = adapter
+            } else {
+                viewBinding.errorMsg.visibility = View.VISIBLE
+                notificationsListView.visibility = View.GONE
+            }
         })
 
         notificationsViewModel.loadingLiveData.observe(viewLifecycleOwner,{

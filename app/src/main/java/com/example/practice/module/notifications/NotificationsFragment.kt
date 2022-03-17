@@ -2,7 +2,9 @@ package com.example.practice.module.notifications
 
 import android.app.Dialog
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.getColor
 import androidx.lifecycle.Observer
@@ -23,6 +25,7 @@ class NotificationsFragment :  BaseFragment<FragmentNotificationsBinding>(Fragme
     private lateinit var notificationsViewModel: NotificationsViewModel
     private var isExpend = false
     private var mLoadingDialog: Dialog? = null
+    private lateinit var adapter:NotificationsListViewAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,8 +43,38 @@ class NotificationsFragment :  BaseFragment<FragmentNotificationsBinding>(Fragme
         val titleView: TextView = viewBinding.titleLl.title
         var loadingDialog = LoadingDialogUtils()
         val swipeRefreshLayout: SwipeRefreshLayout= viewBinding.refresh
-
+        val searchView:SearchView = viewBinding.searchStr
         titleView.text = getString(R.string.title_notifications)
+        searchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
+            //文字が変更されたとき
+            override fun onQueryTextChange(newText: String): Boolean {
+                if(!TextUtils.isEmpty(newText)){
+                    adapter.filter?.filter(newText)
+                    if(0 == adapter.itemCount) {
+                        viewBinding.errorMsg.visibility = View.VISIBLE
+                        viewBinding.errorMsg.text = "検索された内容はありません。"
+                        notificationsListView.visibility = View.GONE
+                    }
+                }else {
+                    adapter.filter?.filter(newText)
+                    notificationsListView.visibility = View.VISIBLE
+                    viewBinding.errorMsg.visibility = View.GONE
+                }
+                return false
+            }
+            //検索ボタンを押下したとき
+            override fun onQueryTextSubmit(query: String): Boolean {
+                if(0 == adapter.itemCount) {
+                    viewBinding.errorMsg.visibility = View.VISIBLE
+                    viewBinding.errorMsg.text = "検索された内容はありません。"
+                    notificationsListView.visibility = View.GONE
+                } else {
+                    notificationsListView.visibility = View.VISIBLE
+                    viewBinding.errorMsg.visibility = View.GONE
+                }
+                return false
+            }
+        })
         notificationsViewModel.notificationsListLiveData.observe(viewLifecycleOwner, Observer {
             var init: (View, NotificationData) -> Unit = { v:View, d:NotificationData ->
                 var titleTv = v.findViewById<TextView>(R.id.shop_title)
@@ -52,12 +85,12 @@ class NotificationsFragment :  BaseFragment<FragmentNotificationsBinding>(Fragme
             if( it.getOrNull()!=null) {
                 notificationsListView.visibility = View.VISIBLE
                 viewBinding.errorMsg.visibility = View.GONE
-                var adapter = it.getOrNull()?.let { it1 ->
-                    NotificationsListViewAdapter(
-                        R.layout.notification_item,
-                        it1.notificationList, init
-                    )
-                }
+                 adapter = it.getOrNull()?.let { it1 ->
+                     NotificationsListViewAdapter(
+                         R.layout.notification_item,
+                         it1.notificationList, init
+                     )
+                 }!!
                 adapter?.setRecyclerItemClickListener(object : OnRecyclerItemClickListener {
                     override fun onRecyclerItemClick(view: View, Position: Int) {
                         var tv = view.findViewById<TextView>(R.id.expandable_text)
